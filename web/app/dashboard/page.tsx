@@ -38,8 +38,8 @@ type Deadline = {
 type DashboardSummary = {
   projects?: ProjectScore[]
   project_scores?: ProjectScore[]
-  violations_by_type?: ViolationByType[]
-  open_violations_by_type?: ViolationByType[]
+  violations_by_type?: ViolationByType[] | Record<string, number>
+  open_violations_by_type?: ViolationByType[] | Record<string, number>
   weeks_filed?: number
   weeks_due?: number
   restitution_outstanding?: number
@@ -112,7 +112,10 @@ export default function DashboardPage() {
   const violations: ViolationByType[] = useMemo(() => {
     if (!summary) return []
     const raw = summary.open_violations_by_type || summary.violations_by_type || []
-    return raw
+    const list: ViolationByType[] = Array.isArray(raw)
+      ? raw
+      : Object.entries(raw as Record<string, number>).map(([type, count]) => ({ type, count }))
+    return list
       .map((v) => ({ type: v.type || v.finding_type || 'unknown', count: num(v.count) }))
       .sort((a, b) => num(b.count) - num(a.count))
   }, [summary])
