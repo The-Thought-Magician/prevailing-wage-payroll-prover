@@ -84,7 +84,7 @@ export default function Wh347ListPage() {
   const [genOpen, setGenOpen] = useState(false)
   const [genProject, setGenProject] = useState('')
   const [genWeek, setGenWeek] = useState('')
-  const [genFringe, setGenFringe] = useState('cash')
+  const [genFringe, setGenFringe] = useState('4a')
   const [genFinal, setGenFinal] = useState(false)
   const [genBusy, setGenBusy] = useState(false)
   const [genError, setGenError] = useState<string | null>(null)
@@ -154,7 +154,7 @@ export default function Wh347ListPage() {
       setGenOpen(false)
       setGenProject('')
       setGenWeek('')
-      setGenFringe('cash')
+      setGenFringe('4a')
       setGenFinal(false)
       await load()
     } catch (e) {
@@ -383,8 +383,8 @@ export default function Wh347ListPage() {
               onChange={(e) => setGenFringe(e.target.value)}
               className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
             >
-              <option value="cash">4(a) — Paid in cash</option>
-              <option value="plan">4(b) — Paid to approved plans/funds</option>
+              <option value="4a">4(a) — Paid in cash</option>
+              <option value="4b">4(b) — Paid to approved plans/funds</option>
             </select>
           </div>
           <label className="flex items-center gap-2 text-sm text-slate-300">
