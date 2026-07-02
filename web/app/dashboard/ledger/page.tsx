@@ -196,7 +196,7 @@ export default function LedgerPage() {
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-white">Payroll Ledger</h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm text-stone-500">
             Per-worker, per-day certified-payroll ledger. Enter a full week at once or clone last week.
           </p>
         </div>
@@ -232,12 +232,12 @@ export default function LedgerPage() {
       <Card>
         <CardBody className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div className="flex flex-wrap gap-3">
-            <label className="flex flex-col text-xs font-medium text-slate-400">
+            <label className="flex flex-col text-xs font-medium text-stone-400">
               Project
               <select
                 value={projectId}
                 onChange={(e) => setProjectId(e.target.value)}
-                className="mt-1 min-w-[14rem] rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-amber-500 focus:outline-none"
+                className="mt-1 min-w-[14rem] rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-cyan-500 focus:outline-none"
               >
                 {projects.length === 0 && <option value="">No projects</option>}
                 {projects.map((p) => (
@@ -247,23 +247,23 @@ export default function LedgerPage() {
                 ))}
               </select>
             </label>
-            <label className="flex flex-col text-xs font-medium text-slate-400">
+            <label className="flex flex-col text-xs font-medium text-stone-400">
               Week ending (Sat)
               <input
                 type="date"
                 value={weekEnding}
                 onChange={(e) => setWeekEnding(e.target.value)}
-                className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-amber-500 focus:outline-none"
+                className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-cyan-500 focus:outline-none"
               />
             </label>
           </div>
-          <label className="flex flex-col text-xs font-medium text-slate-400 sm:w-64">
+          <label className="flex flex-col text-xs font-medium text-stone-400 sm:w-64">
             Search worker / classification
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Filter..."
-              className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-600 focus:border-amber-500 focus:outline-none"
+              className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none"
             />
           </label>
         </CardBody>
@@ -284,7 +284,7 @@ export default function LedgerPage() {
             <h2 className="text-sm font-semibold text-white">
               {projectName || 'Ledger'} — week ending {weekEnding}
             </h2>
-            <p className="text-xs text-slate-500">{filtered.length} line(s)</p>
+            <p className="text-xs text-stone-500">{filtered.length} line(s)</p>
           </div>
           {linesLoading && <Spinner />}
         </CardHeader>
@@ -299,23 +299,23 @@ export default function LedgerPage() {
                 workers.length > 0 ? (
                   <Button onClick={() => setBulkOpen(true)}>Bulk week entry</Button>
                 ) : (
-                  <span className="text-xs text-slate-500">Add workers to the roster first.</span>
+                  <span className="text-xs text-stone-500">Add workers to the roster first.</span>
                 )
               }
             />
           ) : (
             <div className="space-y-6">
               {byWorker.map((grp) => (
-                <div key={grp.workerId} className="rounded-lg border border-slate-800">
-                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 px-4 py-3">
+                <div key={grp.workerId} className="rounded-lg border border-stone-800">
+                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-stone-800 px-4 py-3">
                     <div className="flex items-center gap-2">
                       <span className="font-semibold text-white">{grp.name}</span>
                       {grp.lines.some((l) => l.is_apprentice) && <Badge tone="blue">apprentice</Badge>}
                     </div>
-                    <div className="flex flex-wrap gap-3 text-xs text-slate-400">
+                    <div className="flex flex-wrap gap-3 text-xs text-stone-400">
                       <span>ST {grp.st.toFixed(1)}</span>
-                      <span className="text-amber-300">OT {grp.ot.toFixed(1)}</span>
-                      <span className="text-amber-300">DT {grp.dt.toFixed(1)}</span>
+                      <span className="text-cyan-300">OT {grp.ot.toFixed(1)}</span>
+                      <span className="text-cyan-300">DT {grp.dt.toFixed(1)}</span>
                       <span className="text-emerald-300">{money(grp.gross)}</span>
                     </div>
                   </div>
@@ -340,11 +340,11 @@ export default function LedgerPage() {
                         .sort((a, b) => a.work_date.localeCompare(b.work_date))
                         .map((l) => (
                           <TR key={l.id}>
-                            <TD className="whitespace-nowrap text-slate-200">{l.work_date}</TD>
+                            <TD className="whitespace-nowrap text-stone-200">{l.work_date}</TD>
                             <TD>{l.classification_name}</TD>
                             <TD className="text-right">{num(l.straight_hours).toFixed(1)}</TD>
-                            <TD className="text-right text-amber-300">{num(l.overtime_hours).toFixed(1)}</TD>
-                            <TD className="text-right text-amber-300">{num(l.doubletime_hours).toFixed(1)}</TD>
+                            <TD className="text-right text-cyan-300">{num(l.overtime_hours).toFixed(1)}</TD>
+                            <TD className="text-right text-cyan-300">{num(l.doubletime_hours).toFixed(1)}</TD>
                             <TD className="text-right">{money(num(l.base_rate_paid))}</TD>
                             <TD className="text-right">{money(num(l.fringe_cash_paid))}</TD>
                             <TD className="text-right">{money(num(l.fringe_plan_paid))}</TD>
@@ -555,12 +555,12 @@ function BulkWeekModal({
         </div>
       )}
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        <label className="flex flex-col text-xs font-medium text-slate-400">
+        <label className="flex flex-col text-xs font-medium text-stone-400">
           Worker
           <select
             value={workerId}
             onChange={(e) => setWorkerId(e.target.value)}
-            className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-amber-500 focus:outline-none"
+            className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-cyan-500 focus:outline-none"
           >
             {workers.map((w) => (
               <option key={w.id} value={w.id}>
@@ -569,85 +569,85 @@ function BulkWeekModal({
             ))}
           </select>
         </label>
-        <label className="flex flex-col text-xs font-medium text-slate-400">
+        <label className="flex flex-col text-xs font-medium text-stone-400">
           Classification
           <input
             value={classification}
             onChange={(e) => setClassification(e.target.value)}
             placeholder="e.g. Electrician (Journeyworker)"
-            className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-600 focus:border-amber-500 focus:outline-none"
+            className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none"
           />
         </label>
       </div>
       <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
-        <label className="flex flex-col text-xs font-medium text-slate-400">
+        <label className="flex flex-col text-xs font-medium text-stone-400">
           Base $/hr
           <input
             type="number"
             step="0.01"
             value={baseRate}
             onChange={(e) => setBaseRate(e.target.value)}
-            className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-amber-500 focus:outline-none"
+            className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-cyan-500 focus:outline-none"
           />
         </label>
-        <label className="flex flex-col text-xs font-medium text-slate-400">
+        <label className="flex flex-col text-xs font-medium text-stone-400">
           Fringe cash $/hr
           <input
             type="number"
             step="0.01"
             value={fringeCash}
             onChange={(e) => setFringeCash(e.target.value)}
-            className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-amber-500 focus:outline-none"
+            className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-cyan-500 focus:outline-none"
           />
         </label>
-        <label className="flex flex-col text-xs font-medium text-slate-400">
+        <label className="flex flex-col text-xs font-medium text-stone-400">
           Fringe plan $/hr
           <input
             type="number"
             step="0.01"
             value={fringePlan}
             onChange={(e) => setFringePlan(e.target.value)}
-            className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-amber-500 focus:outline-none"
+            className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-cyan-500 focus:outline-none"
           />
         </label>
-        <label className="flex flex-col text-xs font-medium text-slate-400">
+        <label className="flex flex-col text-xs font-medium text-stone-400">
           OT multiplier
           <input
             type="number"
             step="0.1"
             value={otMult}
             onChange={(e) => setOtMult(e.target.value)}
-            className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-amber-500 focus:outline-none"
+            className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-cyan-500 focus:outline-none"
           />
         </label>
       </div>
 
-      <label className="mt-3 flex items-center gap-2 text-sm text-slate-300">
+      <label className="mt-3 flex items-center gap-2 text-sm text-stone-300">
         <input
           type="checkbox"
           checked={isApprentice}
           onChange={(e) => setIsApprentice(e.target.checked)}
-          className="h-4 w-4 rounded border-slate-700 bg-slate-950 accent-amber-500"
+          className="h-4 w-4 rounded border-stone-700 bg-stone-950 accent-cyan-500"
         />
         Apprentice on this work
       </label>
 
-      <div className="mt-4 overflow-x-auto rounded-lg border border-slate-800">
+      <div className="mt-4 overflow-x-auto rounded-lg border border-stone-800">
         <table className="w-full text-sm">
-          <thead className="text-left text-xs uppercase tracking-wide text-slate-500">
+          <thead className="text-left text-xs uppercase tracking-wide text-stone-500">
             <tr>
               <th className="px-3 py-2">Day</th>
               {dates.map((d, i) => (
                 <th key={d} className="px-2 py-2 text-center">
                   {DAYS[i]}
-                  <div className="text-[10px] font-normal text-slate-600">{d.slice(5)}</div>
+                  <div className="text-[10px] font-normal text-stone-600">{d.slice(5)}</div>
                 </th>
               ))}
             </tr>
           </thead>
           <tbody>
-            <tr className="border-t border-slate-800">
-              <td className="px-3 py-2 text-slate-400">ST hrs</td>
+            <tr className="border-t border-stone-800">
+              <td className="px-3 py-2 text-stone-400">ST hrs</td>
               {dates.map((d, i) => (
                 <td key={d} className="px-1 py-1">
                   <input
@@ -656,13 +656,13 @@ function BulkWeekModal({
                     min="0"
                     value={st[i]}
                     onChange={(e) => setSt((arr) => arr.map((v, j) => (j === i ? e.target.value : v)))}
-                    className="w-full rounded border border-slate-700 bg-slate-950 px-2 py-1 text-center text-sm text-slate-100 focus:border-amber-500 focus:outline-none"
+                    className="w-full rounded border border-stone-700 bg-stone-950 px-2 py-1 text-center text-sm text-stone-100 focus:border-cyan-500 focus:outline-none"
                   />
                 </td>
               ))}
             </tr>
-            <tr className="border-t border-slate-800">
-              <td className="px-3 py-2 text-amber-300">OT hrs</td>
+            <tr className="border-t border-stone-800">
+              <td className="px-3 py-2 text-cyan-300">OT hrs</td>
               {dates.map((d, i) => (
                 <td key={d} className="px-1 py-1">
                   <input
@@ -671,7 +671,7 @@ function BulkWeekModal({
                     min="0"
                     value={ot[i]}
                     onChange={(e) => setOt((arr) => arr.map((v, j) => (j === i ? e.target.value : v)))}
-                    className="w-full rounded border border-slate-700 bg-slate-950 px-2 py-1 text-center text-sm text-slate-100 focus:border-amber-500 focus:outline-none"
+                    className="w-full rounded border border-stone-700 bg-stone-950 px-2 py-1 text-center text-sm text-stone-100 focus:border-cyan-500 focus:outline-none"
                   />
                 </td>
               ))}
@@ -679,7 +679,7 @@ function BulkWeekModal({
           </tbody>
         </table>
       </div>
-      <div className="mt-3 flex justify-between text-xs text-slate-400">
+      <div className="mt-3 flex justify-between text-xs text-stone-400">
         <span>Total hours: {totalHours.toFixed(1)}</span>
         <span className="text-emerald-300">Projected gross: {money(totalGross)}</span>
       </div>
@@ -735,27 +735,27 @@ function CloneWeekModal({
           {error}
         </div>
       )}
-      <p className="mb-3 text-sm text-slate-400">
+      <p className="mb-3 text-sm text-stone-400">
         Copy every payroll line from one week to another for this project. Useful when the crew works the same
         schedule week over week.
       </p>
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        <label className="flex flex-col text-xs font-medium text-slate-400">
+        <label className="flex flex-col text-xs font-medium text-stone-400">
           From week ending
           <input
             type="date"
             value={from}
             onChange={(e) => setFrom(e.target.value)}
-            className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-amber-500 focus:outline-none"
+            className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-cyan-500 focus:outline-none"
           />
         </label>
-        <label className="flex flex-col text-xs font-medium text-slate-400">
+        <label className="flex flex-col text-xs font-medium text-stone-400">
           To week ending
           <input
             type="date"
             value={to}
             onChange={(e) => setTo(e.target.value)}
-            className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-amber-500 focus:outline-none"
+            className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-cyan-500 focus:outline-none"
           />
         </label>
       </div>
@@ -835,68 +835,68 @@ function EditLineModal({
         </div>
       )}
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-        <label className="flex flex-col text-xs font-medium text-slate-400">
+        <label className="flex flex-col text-xs font-medium text-stone-400">
           Work date
           <input
             type="date"
             value={workDate}
             onChange={(e) => setWorkDate(e.target.value)}
-            className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-amber-500 focus:outline-none"
+            className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-cyan-500 focus:outline-none"
           />
         </label>
-        <label className="col-span-2 flex flex-col text-xs font-medium text-slate-400 sm:col-span-2">
+        <label className="col-span-2 flex flex-col text-xs font-medium text-stone-400 sm:col-span-2">
           Classification
           <input
             value={classification}
             onChange={(e) => setClassification(e.target.value)}
-            className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-amber-500 focus:outline-none"
+            className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-cyan-500 focus:outline-none"
           />
         </label>
-        <label className="flex flex-col text-xs font-medium text-slate-400">
+        <label className="flex flex-col text-xs font-medium text-stone-400">
           ST hrs
-          <input type="number" step="0.5" value={st} onChange={(e) => setSt(e.target.value)} onBlur={recalc} className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-amber-500 focus:outline-none" />
+          <input type="number" step="0.5" value={st} onChange={(e) => setSt(e.target.value)} onBlur={recalc} className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-cyan-500 focus:outline-none" />
         </label>
-        <label className="flex flex-col text-xs font-medium text-slate-400">
+        <label className="flex flex-col text-xs font-medium text-stone-400">
           OT hrs
-          <input type="number" step="0.5" value={ot} onChange={(e) => setOt(e.target.value)} onBlur={recalc} className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-amber-500 focus:outline-none" />
+          <input type="number" step="0.5" value={ot} onChange={(e) => setOt(e.target.value)} onBlur={recalc} className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-cyan-500 focus:outline-none" />
         </label>
-        <label className="flex flex-col text-xs font-medium text-slate-400">
+        <label className="flex flex-col text-xs font-medium text-stone-400">
           DT hrs
-          <input type="number" step="0.5" value={dt} onChange={(e) => setDt(e.target.value)} onBlur={recalc} className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-amber-500 focus:outline-none" />
+          <input type="number" step="0.5" value={dt} onChange={(e) => setDt(e.target.value)} onBlur={recalc} className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-cyan-500 focus:outline-none" />
         </label>
-        <label className="flex flex-col text-xs font-medium text-slate-400">
+        <label className="flex flex-col text-xs font-medium text-stone-400">
           Base $/hr
-          <input type="number" step="0.01" value={base} onChange={(e) => setBase(e.target.value)} onBlur={recalc} className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-amber-500 focus:outline-none" />
+          <input type="number" step="0.01" value={base} onChange={(e) => setBase(e.target.value)} onBlur={recalc} className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-cyan-500 focus:outline-none" />
         </label>
-        <label className="flex flex-col text-xs font-medium text-slate-400">
+        <label className="flex flex-col text-xs font-medium text-stone-400">
           Fringe cash $/hr
-          <input type="number" step="0.01" value={fc} onChange={(e) => setFc(e.target.value)} onBlur={recalc} className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-amber-500 focus:outline-none" />
+          <input type="number" step="0.01" value={fc} onChange={(e) => setFc(e.target.value)} onBlur={recalc} className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-cyan-500 focus:outline-none" />
         </label>
-        <label className="flex flex-col text-xs font-medium text-slate-400">
+        <label className="flex flex-col text-xs font-medium text-stone-400">
           Fringe plan $/hr
-          <input type="number" step="0.01" value={fp} onChange={(e) => setFp(e.target.value)} onBlur={recalc} className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-amber-500 focus:outline-none" />
+          <input type="number" step="0.01" value={fp} onChange={(e) => setFp(e.target.value)} onBlur={recalc} className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-cyan-500 focus:outline-none" />
         </label>
-        <label className="flex flex-col text-xs font-medium text-slate-400">
+        <label className="flex flex-col text-xs font-medium text-stone-400">
           Gross paid
-          <input type="number" step="0.01" value={gross} onChange={(e) => setGross(e.target.value)} className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-amber-500 focus:outline-none" />
+          <input type="number" step="0.01" value={gross} onChange={(e) => setGross(e.target.value)} className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-cyan-500 focus:outline-none" />
         </label>
       </div>
-      <label className="mt-3 flex items-center gap-2 text-sm text-slate-300">
+      <label className="mt-3 flex items-center gap-2 text-sm text-stone-300">
         <input
           type="checkbox"
           checked={isApprentice}
           onChange={(e) => setIsApprentice(e.target.checked)}
-          className="h-4 w-4 rounded border-slate-700 bg-slate-950 accent-amber-500"
+          className="h-4 w-4 rounded border-stone-700 bg-stone-950 accent-cyan-500"
         />
         Apprentice
       </label>
-      <label className="mt-3 flex flex-col text-xs font-medium text-slate-400">
+      <label className="mt-3 flex flex-col text-xs font-medium text-stone-400">
         Notes
         <textarea
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
           rows={2}
-          className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-amber-500 focus:outline-none"
+          className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-cyan-500 focus:outline-none"
         />
       </label>
     </Modal>

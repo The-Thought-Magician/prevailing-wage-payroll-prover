@@ -26,7 +26,7 @@ interface Classification {
 }
 
 const inputCls =
-  'w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-amber-500 focus:outline-none'
+  'w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-cyan-500 focus:outline-none'
 
 const LEVELS = ['Journeyworker', 'Apprentice', 'Foreman', 'General Foreman', 'Helper']
 
@@ -194,7 +194,7 @@ export default function ClassificationsPage() {
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-white">Classification Catalog</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             Canonical craft classifications and the payroll aliases that map onto them.
           </p>
         </div>
@@ -229,12 +229,12 @@ export default function ClassificationsPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search name, alias, group, level..."
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-amber-500 focus:outline-none sm:max-w-xs"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-cyan-500 focus:outline-none sm:max-w-xs"
             />
             <select
               value={groupFilter}
               onChange={(e) => setGroupFilter(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+              className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             >
               <option value="">All craft groups</option>
               {groups.map((g) => (
@@ -244,12 +244,12 @@ export default function ClassificationsPage() {
               ))}
             </select>
           </div>
-          <label className="flex cursor-pointer items-center gap-2 text-sm text-slate-400">
+          <label className="flex cursor-pointer items-center gap-2 text-sm text-stone-400">
             <input
               type="checkbox"
               checked={apprenticeOnly}
               onChange={(e) => setApprenticeOnly(e.target.checked)}
-              className="h-4 w-4 rounded border-slate-700 bg-slate-950 accent-amber-500"
+              className="h-4 w-4 rounded border-stone-700 bg-stone-950 accent-cyan-500"
             />
             Apprentice-eligible only
           </label>
@@ -268,7 +268,7 @@ export default function ClassificationsPage() {
               />
             </div>
           ) : (
-            <ul className="divide-y divide-slate-800">
+            <ul className="divide-y divide-stone-800">
               {filtered.map((c) => {
                 const open = !!expanded[c.id]
                 const aliases = c.aliases ?? []
@@ -283,13 +283,13 @@ export default function ClassificationsPage() {
                           {c.apprentice_eligible && <Badge tone="amber">Apprentice-eligible</Badge>}
                         </div>
                         {c.journeyworker_classification && (
-                          <p className="mt-1 text-xs text-slate-500">
+                          <p className="mt-1 text-xs text-stone-500">
                             Journeyworker classification: {c.journeyworker_classification}
                           </p>
                         )}
                         <button
                           onClick={() => setExpanded((p) => ({ ...p, [c.id]: !open }))}
-                          className="mt-2 text-xs font-medium text-amber-300 hover:text-amber-200"
+                          className="mt-2 text-xs font-medium text-cyan-300 hover:text-cyan-200"
                         >
                           {open ? 'Hide' : 'Manage'} aliases ({aliases.length})
                         </button>
@@ -305,9 +305,9 @@ export default function ClassificationsPage() {
                     </div>
 
                     {open && (
-                      <div className="mt-3 rounded-lg border border-slate-800 bg-slate-950/60 p-3">
+                      <div className="mt-3 rounded-lg border border-stone-800 bg-stone-950/60 p-3">
                         {aliases.length === 0 ? (
-                          <p className="text-xs text-slate-500">
+                          <p className="text-xs text-stone-500">
                             No aliases yet. Add the spellings payroll imports use so they map here.
                           </p>
                         ) : (
@@ -315,12 +315,12 @@ export default function ClassificationsPage() {
                             {aliases.map((a) => (
                               <span
                                 key={a.id}
-                                className="inline-flex items-center gap-1.5 rounded-full border border-slate-700 bg-slate-800 px-2.5 py-1 text-xs text-slate-300"
+                                className="inline-flex items-center gap-1.5 rounded-full border border-stone-700 bg-stone-800 px-2.5 py-1 text-xs text-stone-300"
                               >
                                 {a.alias}
                                 <button
                                   onClick={() => removeAlias(c, a)}
-                                  className="text-slate-500 hover:text-red-400"
+                                  className="text-stone-500 hover:text-red-400"
                                   aria-label={`Remove alias ${a.alias}`}
                                 >
                                   ✕
@@ -406,16 +406,16 @@ export default function ClassificationsPage() {
               className={inputCls}
             />
           </Field>
-          <label className="flex cursor-pointer items-center gap-2 text-sm text-slate-300">
+          <label className="flex cursor-pointer items-center gap-2 text-sm text-stone-300">
             <input
               type="checkbox"
               checked={form.apprentice_eligible}
               onChange={(e) => setForm({ ...form, apprentice_eligible: e.target.checked })}
-              className="h-4 w-4 rounded border-slate-700 bg-slate-950 accent-amber-500"
+              className="h-4 w-4 rounded border-stone-700 bg-stone-950 accent-cyan-500"
             />
             Apprentice-eligible classification
           </label>
-          <div className="flex justify-end gap-2 border-t border-slate-800 pt-4">
+          <div className="flex justify-end gap-2 border-t border-stone-800 pt-4">
             <Button type="button" variant="secondary" onClick={() => setModalOpen(false)} disabled={saving}>
               Cancel
             </Button>
@@ -432,9 +432,9 @@ export default function ClassificationsPage() {
 function Field({ label, required, children }: { label: string; required?: boolean; children: React.ReactNode }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-xs font-medium text-slate-400">
+      <span className="mb-1 block text-xs font-medium text-stone-400">
         {label}
-        {required && <span className="text-amber-400"> *</span>}
+        {required && <span className="text-cyan-400"> *</span>}
       </span>
       {children}
     </label>

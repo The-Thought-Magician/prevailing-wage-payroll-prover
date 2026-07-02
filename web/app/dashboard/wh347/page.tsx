@@ -182,7 +182,7 @@ export default function Wh347ListPage() {
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-white">WH-347 Certified Payroll</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             Generate U.S. DOL form WH-347 from your proven ledger and route each week for the Statement of Compliance.
           </p>
         </div>
@@ -211,7 +211,7 @@ export default function Wh347ListPage() {
             <select
               value={projectFilter}
               onChange={(e) => setProjectFilter(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+              className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             >
               <option value="">All projects</option>
               {projects.map((p) => (
@@ -223,7 +223,7 @@ export default function Wh347ListPage() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+              className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             >
               <option value="">All statuses</option>
               <option value="draft">Draft</option>
@@ -235,7 +235,7 @@ export default function Wh347ListPage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search week, payroll #, project…"
-            className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-amber-500 focus:outline-none sm:w-72"
+            className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none sm:w-72"
           />
         </CardHeader>
         <CardBody className="p-0">
@@ -287,11 +287,11 @@ export default function Wh347ListPage() {
               <TBody>
                 {filtered.map((w) => (
                   <TR key={w.id}>
-                    <TD className="font-medium text-slate-200">{projectName(w.project_id)}</TD>
+                    <TD className="font-medium text-stone-200">{projectName(w.project_id)}</TD>
                     <TD>{w.week_ending || '—'}</TD>
                     <TD className="text-right tabular-nums">{w.payroll_number ?? '—'}</TD>
                     <TD className="text-center">
-                      {w.is_final ? <Badge tone="amber">Final</Badge> : <span className="text-slate-600">—</span>}
+                      {w.is_final ? <Badge tone="amber">Final</Badge> : <span className="text-stone-600">—</span>}
                     </TD>
                     <TD className="capitalize">{w.fringe_method || '—'}</TD>
                     <TD className="text-right tabular-nums">{lineCount(w)}</TD>
@@ -344,16 +344,16 @@ export default function Wh347ListPage() {
         }
       >
         <div className="space-y-4">
-          <p className="text-sm text-slate-400">
+          <p className="text-sm text-stone-400">
             Builds the certified payroll form from ledger lines for the selected project week. The next payroll number
             is assigned automatically.
           </p>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Project</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Project</label>
             <select
               value={genProject}
               onChange={(e) => setGenProject(e.target.value)}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             >
               <option value="">Select project…</option>
               {projects.map((p) => (
@@ -364,35 +364,35 @@ export default function Wh347ListPage() {
             </select>
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
               Week Ending
             </label>
             <input
               type="date"
               value={genWeek}
               onChange={(e) => setGenWeek(e.target.value)}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
               Fringe Method
             </label>
             <select
               value={genFringe}
               onChange={(e) => setGenFringe(e.target.value)}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             >
               <option value="4a">4(a) — Paid in cash</option>
               <option value="4b">4(b) — Paid to approved plans/funds</option>
             </select>
           </div>
-          <label className="flex items-center gap-2 text-sm text-slate-300">
+          <label className="flex items-center gap-2 text-sm text-stone-300">
             <input
               type="checkbox"
               checked={genFinal}
               onChange={(e) => setGenFinal(e.target.checked)}
-              className="h-4 w-4 rounded border-slate-700 bg-slate-950 text-amber-500 focus:ring-amber-500"
+              className="h-4 w-4 rounded border-stone-700 bg-stone-950 text-cyan-500 focus:ring-cyan-500"
             />
             Mark as final payroll for this project
           </label>

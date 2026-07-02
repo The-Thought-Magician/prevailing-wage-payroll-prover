@@ -142,7 +142,7 @@ export default function ActivityPage() {
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <h1 className="text-xl font-bold text-white">Activity Trail</h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm text-stone-500">
             Immutable audit log of every create, update, validation, and filing action across the workspace.
           </p>
         </div>
@@ -170,13 +170,13 @@ export default function ActivityPage() {
         <CardBody>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
                 Entity type (server)
               </label>
               <select
                 value={entityType}
                 onChange={(e) => setEntityType(e.target.value)}
-                className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               >
                 <option value="">Any type</option>
                 {entityTypes.map((t) => (
@@ -187,24 +187,24 @@ export default function ActivityPage() {
               </select>
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
                 Entity ID (server)
               </label>
               <input
                 value={entityId}
                 onChange={(e) => setEntityId(e.target.value)}
                 placeholder="Filter by entity id"
-                className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
                 Action
               </label>
               <select
                 value={actionFilter}
                 onChange={(e) => setActionFilter(e.target.value)}
-                className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               >
                 <option value="">Any action</option>
                 {actions.map((a) => (
@@ -215,14 +215,14 @@ export default function ActivityPage() {
               </select>
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
                 Search
               </label>
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search log..."
-                className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </div>
           </div>
@@ -244,7 +244,7 @@ export default function ActivityPage() {
                 Clear
               </Button>
             )}
-            <span className="ml-auto text-xs text-slate-500">
+            <span className="ml-auto text-xs text-stone-500">
               {filtered.length} of {items.length} shown
             </span>
           </div>
@@ -266,9 +266,9 @@ export default function ActivityPage() {
         <div className="space-y-6">
           {grouped.map((group) => (
             <div key={group.day}>
-              <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">{group.day}</div>
+              <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-stone-500">{group.day}</div>
               <Card>
-                <ol className="divide-y divide-slate-800">
+                <ol className="divide-y divide-stone-800">
                   {group.rows.map((row) => {
                     const detail = detailText(row.detail)
                     return (
@@ -281,32 +281,32 @@ export default function ActivityPage() {
                                 : actionTone(row.action) === 'red'
                                   ? 'bg-red-400'
                                   : actionTone(row.action) === 'amber'
-                                    ? 'bg-amber-400'
+                                    ? 'bg-cyan-400'
                                     : actionTone(row.action) === 'blue'
                                       ? 'bg-sky-400'
-                                      : 'bg-slate-500'
+                                      : 'bg-stone-500'
                             }`}
                           />
                         </div>
                         <div className="min-w-0 flex-1">
                           <div className="flex flex-wrap items-center gap-2">
                             <Badge tone={actionTone(row.action)}>{row.action || 'event'}</Badge>
-                            <span className="text-sm font-medium capitalize text-slate-200">
+                            <span className="text-sm font-medium capitalize text-stone-200">
                               {entityLabel(row.entity_type)}
                             </span>
                             {row.entity_id && (
-                              <code className="rounded bg-slate-800 px-1.5 py-0.5 text-xs text-slate-400">
+                              <code className="rounded bg-stone-800 px-1.5 py-0.5 text-xs text-stone-400">
                                 {row.entity_id}
                               </code>
                             )}
-                            <span className="ml-auto whitespace-nowrap text-xs text-slate-500">
+                            <span className="ml-auto whitespace-nowrap text-xs text-stone-500">
                               {relativeTime(row.created_at)}
                             </span>
                           </div>
                           {detail && (
-                            <p className="mt-1 break-words font-mono text-xs text-slate-500">{detail}</p>
+                            <p className="mt-1 break-words font-mono text-xs text-stone-500">{detail}</p>
                           )}
-                          <div className="mt-0.5 text-xs text-slate-600">
+                          <div className="mt-0.5 text-xs text-stone-600">
                             {row.created_at ? new Date(row.created_at).toLocaleString() : ''}
                           </div>
                         </div>

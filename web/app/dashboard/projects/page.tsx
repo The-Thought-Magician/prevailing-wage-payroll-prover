@@ -170,7 +170,7 @@ export default function ProjectsPage() {
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold text-white">Projects</h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm text-stone-500">
             Prevailing-wage contracts you track, prove, and file payroll against.
           </p>
         </div>
@@ -203,12 +203,12 @@ export default function ProjectsPage() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search name, agency, contract #, county..."
-                className="flex-1 min-w-[200px] rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-amber-500 focus:outline-none"
+                className="flex-1 min-w-[200px] rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none"
               />
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               >
                 <option value="">All statuses</option>
                 {STATUSES.map((s) => (
@@ -220,7 +220,7 @@ export default function ProjectsPage() {
               <select
                 value={coverageFilter}
                 onChange={(e) => setCoverageFilter(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               >
                 <option value="">All coverage</option>
                 {COVERAGES.map((c) => (
@@ -234,7 +234,7 @@ export default function ProjectsPage() {
 
           <Card className="overflow-hidden">
             {filtered.length === 0 ? (
-              <div className="px-5 py-10 text-center text-sm text-slate-500">No projects match your filters.</div>
+              <div className="px-5 py-10 text-center text-sm text-stone-500">No projects match your filters.</div>
             ) : (
               <Table>
                 <THead>
@@ -251,19 +251,19 @@ export default function ProjectsPage() {
                   {filtered.map((p) => (
                     <TR key={p.id}>
                       <TD>
-                        <Link href={`/dashboard/projects/${p.id}`} className="font-medium text-slate-100 hover:text-amber-300">
+                        <Link href={`/dashboard/projects/${p.id}`} className="font-medium text-stone-100 hover:text-cyan-300">
                           {p.name}
                         </Link>
-                        <div className="text-xs text-slate-600">
+                        <div className="text-xs text-stone-600">
                           {[p.contract_number, p.county, p.state].filter(Boolean).join(' · ') || '—'}
                         </div>
                       </TD>
-                      <TD className="text-slate-400">{p.awarding_agency || '—'}</TD>
+                      <TD className="text-stone-400">{p.awarding_agency || '—'}</TD>
                       <TD>
                         <Badge tone="blue">{(p.coverage || 'davis_bacon').replace(/_/g, '-')}</Badge>
                       </TD>
-                      <TD className="capitalize text-slate-400">{p.filing_cadence || 'weekly'}</TD>
-                      <TD className="text-right tabular-nums text-slate-300">{money(p.contract_value_cents)}</TD>
+                      <TD className="capitalize text-stone-400">{p.filing_cadence || 'weekly'}</TD>
+                      <TD className="text-right tabular-nums text-stone-300">{money(p.contract_value_cents)}</TD>
                       <TD className="text-right">
                         <Badge tone={statusTone(p.status)}>{(p.status || 'active').replace(/_/g, ' ')}</Badge>
                       </TD>
@@ -273,7 +273,7 @@ export default function ProjectsPage() {
               </Table>
             )}
           </Card>
-          <p className="text-xs text-slate-600">
+          <p className="text-xs text-stone-600">
             {filtered.length} of {projects.length} project{projects.length === 1 ? '' : 's'}
           </p>
         </>
@@ -320,9 +320,9 @@ export default function ProjectsPage() {
               ))}
             </select>
             {companies.length === 0 && (
-              <p className="mt-1 text-xs text-slate-600">
+              <p className="mt-1 text-xs text-stone-600">
                 No companies yet.{' '}
-                <Link href="/dashboard/settings" className="text-amber-400 hover:text-amber-300">
+                <Link href="/dashboard/settings" className="text-cyan-400 hover:text-cyan-300">
                   Add one in Settings
                 </Link>
                 .
@@ -469,14 +469,14 @@ export default function ProjectsPage() {
 }
 
 const inputCls =
-  'w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-amber-500 focus:outline-none'
+  'w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none'
 
 function Field({ label, required, children }: { label: string; required?: boolean; children: React.ReactNode }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
         {label}
-        {required && <span className="text-amber-400"> *</span>}
+        {required && <span className="text-cyan-400"> *</span>}
       </span>
       {children}
     </label>

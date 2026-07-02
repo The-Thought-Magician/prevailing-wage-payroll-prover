@@ -244,7 +244,7 @@ export default function AuditPacketsPage() {
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-white">Audit Packets</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             Bundle WH-347s, determinations, ledger, fringe, apprenticeship, and restitution into a
             DOL / state-agency audit packet.
           </p>
@@ -274,11 +274,11 @@ export default function AuditPacketsPage() {
           <Card>
             <CardHeader className="flex flex-wrap items-center gap-3">
               <div className="flex flex-col">
-                <label className="text-xs uppercase tracking-wide text-slate-500">Project</label>
+                <label className="text-xs uppercase tracking-wide text-stone-500">Project</label>
                 <select
                   value={projectId}
                   onChange={(e) => setProjectId(e.target.value)}
-                  className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                  className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
                 >
                   {projects.map((p) => (
                     <option key={p.id} value={p.id}>
@@ -323,7 +323,7 @@ export default function AuditPacketsPage() {
                         const secs = manifestSections(p.manifest)
                         return (
                           <TR key={p.id}>
-                            <TD className="font-medium text-slate-100">
+                            <TD className="font-medium text-stone-100">
                               {fmtDate(p.period_start)} – {fmtDate(p.period_end)}
                             </TD>
                             <TD>
@@ -331,7 +331,7 @@ export default function AuditPacketsPage() {
                             </TD>
                             <TD>
                               {secs.length === 0 ? (
-                                <span className="text-slate-500">—</span>
+                                <span className="text-stone-500">—</span>
                               ) : (
                                 <div className="flex flex-wrap gap-1">
                                   {secs.slice(0, 4).map((s) => (
@@ -345,7 +345,7 @@ export default function AuditPacketsPage() {
                                 </div>
                               )}
                             </TD>
-                            <TD className="text-slate-400">{fmtDate(p.created_at)}</TD>
+                            <TD className="text-stone-400">{fmtDate(p.created_at)}</TD>
                             <TD className="text-right">
                               <div className="inline-flex gap-2">
                                 <Button variant="secondary" onClick={() => openDetail(p)}>
@@ -392,27 +392,27 @@ export default function AuditPacketsPage() {
               {genError}
             </div>
           )}
-          <p className="text-sm text-slate-400">
+          <p className="text-sm text-stone-400">
             Bundles all compliance records for{' '}
-            <span className="text-slate-200">{selectedProject?.name}</span> within the period below.
+            <span className="text-stone-200">{selectedProject?.name}</span> within the period below.
           </p>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
-              <label className="text-xs uppercase tracking-wide text-slate-500">Period start</label>
+              <label className="text-xs uppercase tracking-wide text-stone-500">Period start</label>
               <input
                 type="date"
                 value={genForm.period_start}
                 onChange={(e) => setGenForm((f) => ({ ...f, period_start: e.target.value }))}
-                className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                className="mt-1 w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="text-xs uppercase tracking-wide text-slate-500">Period end</label>
+              <label className="text-xs uppercase tracking-wide text-stone-500">Period end</label>
               <input
                 type="date"
                 value={genForm.period_end}
                 onChange={(e) => setGenForm((f) => ({ ...f, period_end: e.target.value }))}
-                className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                className="mt-1 w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </div>
           </div>
@@ -463,10 +463,10 @@ export default function AuditPacketsPage() {
                   {secs.map((s) => (
                     <div
                       key={s.key}
-                      className="rounded-lg border border-slate-800 bg-slate-950/60 px-3 py-3"
+                      className="rounded-lg border border-stone-800 bg-stone-950/60 px-3 py-3"
                     >
-                      <div className="text-2xl font-bold text-amber-400">{s.count}</div>
-                      <div className="mt-1 text-xs uppercase tracking-wide text-slate-500">
+                      <div className="text-2xl font-bold text-cyan-400">{s.count}</div>
+                      <div className="mt-1 text-xs uppercase tracking-wide text-stone-500">
                         {s.label}
                       </div>
                     </div>

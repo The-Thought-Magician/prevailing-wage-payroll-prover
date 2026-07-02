@@ -226,13 +226,13 @@ export default function DashboardPage() {
             <Card className="lg:col-span-2">
               <CardHeader className="flex items-center justify-between">
                 <h2 className="text-sm font-semibold text-white">Project health</h2>
-                <Link href="/dashboard/projects" className="text-xs font-medium text-amber-400 hover:text-amber-300">
+                <Link href="/dashboard/projects" className="text-xs font-medium text-cyan-400 hover:text-cyan-300">
                   View all →
                 </Link>
               </CardHeader>
               <CardBody className="p-0">
                 {scores.length === 0 ? (
-                  <div className="px-5 py-8 text-center text-sm text-slate-500">
+                  <div className="px-5 py-8 text-center text-sm text-stone-500">
                     No health scores computed yet. Run a validation to populate scores.
                   </div>
                 ) : (
@@ -255,11 +255,11 @@ export default function DashboardPage() {
                           <TR key={pid}>
                             <TD>
                               {pid ? (
-                                <Link href={`/dashboard/projects/${pid}`} className="font-medium text-slate-100 hover:text-amber-300">
+                                <Link href={`/dashboard/projects/${pid}`} className="font-medium text-stone-100 hover:text-cyan-300">
                                   {name}
                                 </Link>
                               ) : (
-                                <span className="font-medium text-slate-100">{name}</span>
+                                <span className="font-medium text-stone-100">{name}</span>
                               )}
                             </TD>
                             <TD className="text-right tabular-nums">
@@ -269,14 +269,14 @@ export default function DashboardPage() {
                                 <span className="text-emerald-400">0</span>
                               )}
                             </TD>
-                            <TD className="text-right tabular-nums text-slate-400">
+                            <TD className="text-right tabular-nums text-stone-400">
                               {num(s.weeks_filed)} / {num(s.weeks_due)}
                             </TD>
                             <TD className="text-right tabular-nums">
                               {num(s.restitution_outstanding) > 0 ? (
-                                <span className="text-amber-300">{money(s.restitution_outstanding)}</span>
+                                <span className="text-cyan-300">{money(s.restitution_outstanding)}</span>
                               ) : (
-                                <span className="text-slate-500">—</span>
+                                <span className="text-stone-500">—</span>
                               )}
                             </TD>
                             <TD className="text-right">
@@ -304,12 +304,12 @@ export default function DashboardPage() {
                     {violations.map((v) => (
                       <div key={v.type}>
                         <div className="mb-1 flex items-center justify-between text-xs">
-                          <span className="capitalize text-slate-300">{(v.type || '').replace(/_/g, ' ')}</span>
-                          <span className="tabular-nums font-medium text-slate-400">{num(v.count)}</span>
+                          <span className="capitalize text-stone-300">{(v.type || '').replace(/_/g, ' ')}</span>
+                          <span className="tabular-nums font-medium text-stone-400">{num(v.count)}</span>
                         </div>
-                        <div className="h-2 w-full overflow-hidden rounded-full bg-slate-800">
+                        <div className="h-2 w-full overflow-hidden rounded-full bg-stone-800">
                           <div
-                            className="h-full rounded-full bg-amber-500"
+                            className="h-full rounded-full bg-cyan-500"
                             style={{ width: `${(num(v.count) / violationMax) * 100}%` }}
                           />
                         </div>
@@ -329,21 +329,21 @@ export default function DashboardPage() {
               </CardHeader>
               <CardBody>
                 {trend.length === 0 ? (
-                  <p className="py-6 text-center text-sm text-slate-500">No trend data yet.</p>
+                  <p className="py-6 text-center text-sm text-stone-500">No trend data yet.</p>
                 ) : (
                   <div className="flex h-40 items-end gap-1.5">
                     {trend.map((t, i) => {
                       const h = (num(t.count) / trendMax) * 100
                       return (
                         <div key={i} className="group flex flex-1 flex-col items-center justify-end" title={`${t.label}: ${num(t.count)}`}>
-                          <span className="mb-1 text-[10px] tabular-nums text-slate-500 opacity-0 group-hover:opacity-100">
+                          <span className="mb-1 text-[10px] tabular-nums text-stone-500 opacity-0 group-hover:opacity-100">
                             {num(t.count)}
                           </span>
                           <div
-                            className="w-full rounded-t bg-amber-500/70 transition-colors group-hover:bg-amber-400"
+                            className="w-full rounded-t bg-cyan-500/70 transition-colors group-hover:bg-cyan-400"
                             style={{ height: `${Math.max(2, h)}%` }}
                           />
-                          <span className="mt-1 w-full truncate text-center text-[9px] text-slate-600">
+                          <span className="mt-1 w-full truncate text-center text-[9px] text-stone-600">
                             {(t.label || '').slice(5)}
                           </span>
                         </div>
@@ -358,13 +358,13 @@ export default function DashboardPage() {
             <Card>
               <CardHeader className="flex items-center justify-between">
                 <h2 className="text-sm font-semibold text-white">Upcoming filing deadlines</h2>
-                <Link href="/dashboard/deadlines" className="text-xs font-medium text-amber-400 hover:text-amber-300">
+                <Link href="/dashboard/deadlines" className="text-xs font-medium text-cyan-400 hover:text-cyan-300">
                   Calendar →
                 </Link>
               </CardHeader>
               <CardBody className="p-0">
                 {deadlines.length === 0 ? (
-                  <p className="px-5 py-8 text-center text-sm text-slate-500">No open deadlines.</p>
+                  <p className="px-5 py-8 text-center text-sm text-stone-500">No open deadlines.</p>
                 ) : (
                   <Table>
                     <THead>
@@ -381,9 +381,9 @@ export default function DashboardPage() {
                         const overdue = due ? due.getTime() < Date.now() : false
                         return (
                           <TR key={d.id || i}>
-                            <TD className="text-slate-200">{d.project_name || d.project_id || '—'}</TD>
-                            <TD className="text-slate-400">{d.week_ending || '—'}</TD>
-                            <TD className="text-slate-400">{d.due_date || '—'}</TD>
+                            <TD className="text-stone-200">{d.project_name || d.project_id || '—'}</TD>
+                            <TD className="text-stone-400">{d.week_ending || '—'}</TD>
+                            <TD className="text-stone-400">{d.due_date || '—'}</TD>
                             <TD className="text-right">
                               <Badge tone={overdue ? 'red' : 'amber'}>{overdue ? 'Overdue' : 'Due'}</Badge>
                             </TD>
@@ -407,7 +407,7 @@ function Header() {
     <div className="flex flex-wrap items-end justify-between gap-3">
       <div>
         <h1 className="text-2xl font-bold text-white">Compliance overview</h1>
-        <p className="mt-1 text-sm text-slate-500">
+        <p className="mt-1 text-sm text-stone-500">
           Prevailing-wage health across every project, with violations, filing status, and back-wage exposure.
         </p>
       </div>

@@ -56,8 +56,8 @@ const EMPTY_PROGRAM: ProgramForm = {
 const EMPTY_LEVEL: LevelForm = { level_name: '', period_number: '', pct_of_journeyworker: '' }
 
 const inputCls =
-  'w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 placeholder-slate-600 focus:border-amber-500/60 focus:outline-none focus:ring-1 focus:ring-amber-500/40'
-const labelCls = 'mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500'
+  'w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 placeholder-stone-600 focus:border-cyan-500/60 focus:outline-none focus:ring-1 focus:ring-cyan-500/40'
+const labelCls = 'mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500'
 
 function fmtDate(d: string | null) {
   if (!d) return '—'
@@ -225,7 +225,7 @@ export default function ProgramsPage() {
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-white">Apprenticeship Programs</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             Registered programs and their wage-progression periods used to validate apprentice pay rates.
           </p>
         </div>
@@ -280,7 +280,7 @@ export default function ProgramsPage() {
                       <Badge tone="amber">{p.registration_number}</Badge>
                       <Badge tone="slate">{(p.required_ratio ?? 0).toFixed(2)}:1 ratio</Badge>
                     </div>
-                    <p className="mt-1 text-sm text-slate-400">
+                    <p className="mt-1 text-sm text-stone-400">
                       {p.sponsor || 'No sponsor'} · Effective {fmtDate(p.effective_date)}
                       {p.end_date ? ` – ${fmtDate(p.end_date)}` : ''}
                     </p>
@@ -303,7 +303,7 @@ export default function ProgramsPage() {
                 </CardHeader>
                 <CardBody>
                   <button
-                    className="text-sm font-medium text-amber-400 hover:text-amber-300"
+                    className="text-sm font-medium text-cyan-400 hover:text-cyan-300"
                     onClick={() => setExpanded((s) => ({ ...s, [p.id]: !s[p.id] }))}
                   >
                     {isOpen ? '▾' : '▸'} {levels.length} progression period{levels.length === 1 ? '' : 's'}
@@ -311,21 +311,21 @@ export default function ProgramsPage() {
 
                   {isOpen &&
                     (levels.length === 0 ? (
-                      <p className="mt-3 text-sm text-slate-500">
+                      <p className="mt-3 text-sm text-stone-500">
                         No periods defined yet. Add wage-progression periods so apprentice pay can be validated as a
                         percentage of the journeyworker rate.
                       </p>
                     ) : (
                       <div className="mt-4 space-y-3">
                         {levels.map((l) => (
-                          <div key={l.id} className="rounded-lg border border-slate-800 bg-slate-950/50 p-3">
+                          <div key={l.id} className="rounded-lg border border-stone-800 bg-stone-950/50 p-3">
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-2">
                                 <Badge tone="blue">Period {l.period_number}</Badge>
-                                <span className="text-sm font-medium text-slate-200">{l.level_name}</span>
+                                <span className="text-sm font-medium text-stone-200">{l.level_name}</span>
                               </div>
                               <div className="flex items-center gap-3">
-                                <span className="text-sm font-semibold text-amber-300">
+                                <span className="text-sm font-semibold text-cyan-300">
                                   {Math.round(l.pct_of_journeyworker)}%
                                 </span>
                                 <button
@@ -336,9 +336,9 @@ export default function ProgramsPage() {
                                 </button>
                               </div>
                             </div>
-                            <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-slate-800">
+                            <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-stone-800">
                               <div
-                                className="h-full rounded-full bg-gradient-to-r from-amber-600 to-amber-400"
+                                className="h-full rounded-full bg-gradient-to-r from-cyan-600 to-cyan-400"
                                 style={{ width: `${Math.min(100, Math.max(0, l.pct_of_journeyworker))}%` }}
                               />
                             </div>

@@ -52,7 +52,7 @@ function money(n: number) {
 }
 
 const inputCls =
-  'w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-amber-500 focus:outline-none'
+  'w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-cyan-500 focus:outline-none'
 
 export default function DeterminationDetailPage() {
   const params = useParams()
@@ -220,7 +220,7 @@ export default function DeterminationDetailPage() {
   if (error || !det) {
     return (
       <div className="space-y-4">
-        <Link href="/dashboard/determinations" className="text-sm text-slate-400 hover:text-amber-300">
+        <Link href="/dashboard/determinations" className="text-sm text-stone-400 hover:text-cyan-300">
           ← Back to determinations
         </Link>
         <EmptyState
@@ -238,7 +238,7 @@ export default function DeterminationDetailPage() {
   return (
     <div className="space-y-6">
       <div>
-        <Link href="/dashboard/determinations" className="text-sm text-slate-400 hover:text-amber-300">
+        <Link href="/dashboard/determinations" className="text-sm text-stone-400 hover:text-cyan-300">
           ← Back to determinations
         </Link>
       </div>
@@ -250,7 +250,7 @@ export default function DeterminationDetailPage() {
             {det.is_active ? <Badge tone="green">Active</Badge> : <Badge tone="amber">Superseded</Badge>}
             {det.modification_number && <Badge tone="slate">Mod {det.modification_number}</Badge>}
           </div>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             {[det.locality, det.county, det.state].filter(Boolean).join(', ') || 'No locality set'}
             {det.schedule_type ? ` · ${det.schedule_type}` : ''}
           </p>
@@ -299,7 +299,7 @@ export default function DeterminationDetailPage() {
                 det.project_id ? (
                   <Link
                     href={`/dashboard/projects/${det.project_id}`}
-                    className="text-amber-300 hover:underline"
+                    className="text-cyan-300 hover:underline"
                   >
                     View project →
                   </Link>
@@ -314,7 +314,7 @@ export default function DeterminationDetailPage() {
                 value={
                   <Link
                     href={`/dashboard/determinations/${det.superseded_by}`}
-                    className="text-amber-300 hover:underline"
+                    className="text-cyan-300 hover:underline"
                   >
                     {allDets.find((d) => d.id === det.superseded_by)?.wd_number ?? 'View →'}
                   </Link>
@@ -328,11 +328,11 @@ export default function DeterminationDetailPage() {
         <Card className="lg:col-span-2">
           <CardHeader>
             <h2 className="text-sm font-semibold text-white">Wage Distribution</h2>
-            <p className="mt-0.5 text-xs text-slate-500">Base vs fringe by classification (per hour)</p>
+            <p className="mt-0.5 text-xs text-stone-500">Base vs fringe by classification (per hour)</p>
           </CardHeader>
           <CardBody>
             {rates.length === 0 ? (
-              <p className="py-6 text-center text-sm text-slate-500">No rates to chart yet.</p>
+              <p className="py-6 text-center text-sm text-stone-500">No rates to chart yet.</p>
             ) : (
               <div className="space-y-3">
                 {[...rates]
@@ -344,19 +344,19 @@ export default function DeterminationDetailPage() {
                     return (
                       <div key={r.id}>
                         <div className="mb-1 flex items-center justify-between text-xs">
-                          <span className="truncate text-slate-300">{r.classification_name}</span>
+                          <span className="truncate text-stone-300">{r.classification_name}</span>
                           <span className="font-medium text-white">{money(total)}</span>
                         </div>
-                        <div className="flex h-3 w-full overflow-hidden rounded-full bg-slate-800">
-                          <div className="h-full bg-amber-500" style={{ width: `${basePct}%` }} />
+                        <div className="flex h-3 w-full overflow-hidden rounded-full bg-stone-800">
+                          <div className="h-full bg-cyan-500" style={{ width: `${basePct}%` }} />
                           <div className="h-full bg-sky-500/70" style={{ width: `${fringePct}%` }} />
                         </div>
                       </div>
                     )
                   })}
-                <div className="flex gap-4 pt-2 text-xs text-slate-500">
+                <div className="flex gap-4 pt-2 text-xs text-stone-500">
                   <span className="flex items-center gap-1.5">
-                    <span className="inline-block h-2.5 w-2.5 rounded-sm bg-amber-500" /> Base
+                    <span className="inline-block h-2.5 w-2.5 rounded-sm bg-cyan-500" /> Base
                   </span>
                   <span className="flex items-center gap-1.5">
                     <span className="inline-block h-2.5 w-2.5 rounded-sm bg-sky-500/70" /> Fringe
@@ -371,7 +371,7 @@ export default function DeterminationDetailPage() {
       <Card>
         <CardHeader>
           <h2 className="text-sm font-semibold text-white">Classification Rates</h2>
-          <p className="mt-0.5 text-xs text-slate-500">
+          <p className="mt-0.5 text-xs text-stone-500">
             These rates are the floor each worker in the classification must be paid.
           </p>
         </CardHeader>
@@ -395,16 +395,16 @@ export default function DeterminationDetailPage() {
               <TBody>
                 {rates.map((r) => (
                   <TR key={r.id}>
-                    <TD className="font-medium text-slate-200">{r.classification_name}</TD>
+                    <TD className="font-medium text-stone-200">{r.classification_name}</TD>
                     <TD className="text-right">{money(r.base_rate)}</TD>
-                    <TD className="text-right text-amber-300">{money(r.fringe_rate)}</TD>
+                    <TD className="text-right text-cyan-300">{money(r.fringe_rate)}</TD>
                     <TD className="text-right font-medium text-white">
                       {money(r.base_rate + r.fringe_rate)}
                     </TD>
                     <TD className="text-right">
                       <button
                         onClick={() => removeRate(r.id)}
-                        className="text-sm text-slate-500 hover:text-red-400"
+                        className="text-sm text-stone-500 hover:text-red-400"
                       >
                         Delete
                       </button>
@@ -417,7 +417,7 @@ export default function DeterminationDetailPage() {
 
           <form
             onSubmit={addRate}
-            className="grid grid-cols-1 gap-2 border-t border-slate-800 pt-4 sm:grid-cols-[1fr_8rem_8rem_auto]"
+            className="grid grid-cols-1 gap-2 border-t border-stone-800 pt-4 sm:grid-cols-[1fr_8rem_8rem_auto]"
           >
             <input
               value={newRate.classification_name}
@@ -502,7 +502,7 @@ export default function DeterminationDetailPage() {
               <input value={form.state} maxLength={2} onChange={(e) => setForm({ ...form, state: e.target.value })} className={inputCls} />
             </Field>
           </div>
-          <div className="flex justify-end gap-2 border-t border-slate-800 pt-4">
+          <div className="flex justify-end gap-2 border-t border-stone-800 pt-4">
             <Button type="button" variant="secondary" onClick={() => setEditOpen(false)} disabled={busy}>
               Cancel
             </Button>
@@ -520,8 +520,8 @@ export default function DeterminationDetailPage() {
               {actionError}
             </div>
           )}
-          <p className="text-sm text-slate-400">
-            This deactivates <span className="font-medium text-slate-200">{det.wd_number}</span>. Optionally link the
+          <p className="text-sm text-stone-400">
+            This deactivates <span className="font-medium text-stone-200">{det.wd_number}</span>. Optionally link the
             replacement schedule.
           </p>
           <Field label="Replaced by (optional)">
@@ -535,7 +535,7 @@ export default function DeterminationDetailPage() {
               ))}
             </select>
           </Field>
-          <div className="flex justify-end gap-2 border-t border-slate-800 pt-4">
+          <div className="flex justify-end gap-2 border-t border-stone-800 pt-4">
             <Button type="button" variant="secondary" onClick={() => setSupersedeOpen(false)} disabled={busy}>
               Cancel
             </Button>
@@ -552,8 +552,8 @@ export default function DeterminationDetailPage() {
 function DetailRow({ label, value }: { label: string; value: React.ReactNode }) {
   return (
     <div className="flex items-center justify-between gap-3">
-      <span className="text-slate-500">{label}</span>
-      <span className="text-right text-slate-200">{value}</span>
+      <span className="text-stone-500">{label}</span>
+      <span className="text-right text-stone-200">{value}</span>
     </div>
   )
 }
@@ -561,9 +561,9 @@ function DetailRow({ label, value }: { label: string; value: React.ReactNode }) 
 function Field({ label, required, children }: { label: string; required?: boolean; children: React.ReactNode }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-xs font-medium text-slate-400">
+      <span className="mb-1 block text-xs font-medium text-stone-400">
         {label}
-        {required && <span className="text-amber-400"> *</span>}
+        {required && <span className="text-cyan-400"> *</span>}
       </span>
       {children}
     </label>

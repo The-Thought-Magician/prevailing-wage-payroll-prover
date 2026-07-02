@@ -74,8 +74,8 @@ const EMPTY_FORM: WorkerForm = {
 }
 
 const inputCls =
-  'w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 placeholder-slate-600 focus:border-amber-500/60 focus:outline-none focus:ring-1 focus:ring-amber-500/40'
-const labelCls = 'mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500'
+  'w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 placeholder-stone-600 focus:border-cyan-500/60 focus:outline-none focus:ring-1 focus:ring-cyan-500/40'
+const labelCls = 'mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500'
 
 export default function WorkersPage() {
   const [workers, setWorkers] = useState<Worker[]>([])
@@ -250,7 +250,7 @@ export default function WorkersPage() {
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-white">Worker Roster</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             Manage certified-payroll workforce and apprentice enrollment against registered programs.
           </p>
         </div>
@@ -338,12 +338,12 @@ export default function WorkersPage() {
                   const prog = programLabel(w)
                   return (
                     <TR key={w.id}>
-                      <TD className="font-medium text-slate-100">
+                      <TD className="font-medium text-stone-100">
                         {w.full_name}
-                        {w.ssn_last4 && <span className="ml-2 text-xs text-slate-500">···{w.ssn_last4}</span>}
+                        {w.ssn_last4 && <span className="ml-2 text-xs text-stone-500">···{w.ssn_last4}</span>}
                       </TD>
-                      <TD>{w.employee_id || <span className="text-slate-600">—</span>}</TD>
-                      <TD>{w.default_classification || <span className="text-slate-600">—</span>}</TD>
+                      <TD>{w.employee_id || <span className="text-stone-600">—</span>}</TD>
+                      <TD>{w.default_classification || <span className="text-stone-600">—</span>}</TD>
                       <TD>
                         {w.is_apprentice ? (
                           <Badge tone="amber">Apprentice</Badge>
@@ -353,9 +353,9 @@ export default function WorkersPage() {
                       </TD>
                       <TD>
                         {prog ? (
-                          <span className="text-slate-300">{prog}</span>
+                          <span className="text-stone-300">{prog}</span>
                         ) : (
-                          <span className="text-slate-600">—</span>
+                          <span className="text-stone-600">—</span>
                         )}
                       </TD>
                       <TD>
@@ -454,15 +454,15 @@ export default function WorkersPage() {
             </div>
           </div>
 
-          <div className="rounded-lg border border-slate-800 bg-slate-950/60 p-4">
+          <div className="rounded-lg border border-stone-800 bg-stone-950/60 p-4">
             <label className="flex items-center gap-3">
               <input
                 type="checkbox"
-                className="h-4 w-4 accent-amber-500"
+                className="h-4 w-4 accent-cyan-500"
                 checked={form.is_apprentice}
                 onChange={(e) => patchForm({ is_apprentice: e.target.checked, program_id: '', program_level_id: '' })}
               />
-              <span className="text-sm font-medium text-slate-200">Enrolled as registered apprentice</span>
+              <span className="text-sm font-medium text-stone-200">Enrolled as registered apprentice</span>
             </label>
 
             {form.is_apprentice && (
@@ -482,7 +482,7 @@ export default function WorkersPage() {
                     ))}
                   </select>
                   {programs.length === 0 && (
-                    <p className="mt-1 text-xs text-amber-400/80">No programs registered yet. Add one under Apprenticeship Programs.</p>
+                    <p className="mt-1 text-xs text-cyan-400/80">No programs registered yet. Add one under Apprenticeship Programs.</p>
                   )}
                 </div>
                 <div>
@@ -508,11 +508,11 @@ export default function WorkersPage() {
           <label className="flex items-center gap-3">
             <input
               type="checkbox"
-              className="h-4 w-4 accent-amber-500"
+              className="h-4 w-4 accent-cyan-500"
               checked={form.is_active}
               onChange={(e) => patchForm({ is_active: e.target.checked })}
             />
-            <span className="text-sm text-slate-300">Active on payroll</span>
+            <span className="text-sm text-stone-300">Active on payroll</span>
           </label>
         </form>
       </Modal>

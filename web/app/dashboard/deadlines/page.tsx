@@ -250,7 +250,7 @@ export default function DeadlinesPage() {
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-white">Filing Deadlines</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             Weekly certified-payroll filing calendar with overdue and due-soon reminders.
           </p>
         </div>
@@ -286,11 +286,11 @@ export default function DeadlinesPage() {
             <CardHeader className="flex flex-wrap items-center justify-between gap-3">
               <div className="flex flex-wrap items-center gap-3">
                 <div className="flex flex-col">
-                  <label className="text-xs uppercase tracking-wide text-slate-500">Project</label>
+                  <label className="text-xs uppercase tracking-wide text-stone-500">Project</label>
                   <select
                     value={projectId}
                     onChange={(e) => setProjectId(e.target.value)}
-                    className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                    className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
                   >
                     {projects.map((p) => (
                       <option key={p.id} value={p.id}>
@@ -301,11 +301,11 @@ export default function DeadlinesPage() {
                   </select>
                 </div>
                 <div className="flex flex-col">
-                  <label className="text-xs uppercase tracking-wide text-slate-500">Status</label>
+                  <label className="text-xs uppercase tracking-wide text-stone-500">Status</label>
                   <select
                     value={statusFilter}
                     onChange={(e) => setStatusFilter(e.target.value as '' | Status)}
-                    className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                    className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
                   >
                     <option value="">All statuses</option>
                     <option value="overdue">Overdue</option>
@@ -315,16 +315,16 @@ export default function DeadlinesPage() {
                   </select>
                 </div>
               </div>
-              <div className="inline-flex overflow-hidden rounded-lg border border-slate-700">
+              <div className="inline-flex overflow-hidden rounded-lg border border-stone-700">
                 <button
                   onClick={() => setView('calendar')}
-                  className={`px-3 py-2 text-sm ${view === 'calendar' ? 'bg-amber-500 text-slate-950' : 'bg-slate-900 text-slate-300 hover:bg-slate-800'}`}
+                  className={`px-3 py-2 text-sm ${view === 'calendar' ? 'bg-cyan-500 text-stone-950' : 'bg-stone-900 text-stone-300 hover:bg-stone-800'}`}
                 >
                   Calendar
                 </button>
                 <button
                   onClick={() => setView('list')}
-                  className={`px-3 py-2 text-sm ${view === 'list' ? 'bg-amber-500 text-slate-950' : 'bg-slate-900 text-slate-300 hover:bg-slate-800'}`}
+                  className={`px-3 py-2 text-sm ${view === 'list' ? 'bg-cyan-500 text-stone-950' : 'bg-stone-900 text-stone-300 hover:bg-stone-800'}`}
                 >
                   List
                 </button>
@@ -358,7 +358,7 @@ export default function DeadlinesPage() {
                     >
                       ← Prev
                     </Button>
-                    <div className="text-sm font-semibold text-slate-200">
+                    <div className="text-sm font-semibold text-stone-200">
                       {monthCursor.toLocaleDateString(undefined, { month: 'long', year: 'numeric' })}
                     </div>
                     <Button
@@ -370,7 +370,7 @@ export default function DeadlinesPage() {
                       Next →
                     </Button>
                   </div>
-                  <div className="grid grid-cols-7 gap-1 text-center text-xs uppercase tracking-wide text-slate-500">
+                  <div className="grid grid-cols-7 gap-1 text-center text-xs uppercase tracking-wide text-stone-500">
                     {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((d) => (
                       <div key={d} className="py-1">
                         {d}
@@ -387,12 +387,12 @@ export default function DeadlinesPage() {
                           key={i}
                           className={`min-h-[78px] rounded-lg border p-1.5 text-left ${
                             inMonth
-                              ? 'border-slate-800 bg-slate-950/40'
-                              : 'border-slate-900 bg-slate-950/20'
-                          } ${isToday ? 'ring-1 ring-amber-500/60' : ''}`}
+                              ? 'border-stone-800 bg-stone-950/40'
+                              : 'border-stone-900 bg-stone-950/20'
+                          } ${isToday ? 'ring-1 ring-cyan-500/60' : ''}`}
                         >
                           <div
-                            className={`text-xs ${inMonth ? 'text-slate-400' : 'text-slate-600'} ${isToday ? 'font-bold text-amber-400' : ''}`}
+                            className={`text-xs ${inMonth ? 'text-stone-400' : 'text-stone-600'} ${isToday ? 'font-bold text-cyan-400' : ''}`}
                           >
                             {date.getDate()}
                           </div>
@@ -412,7 +412,7 @@ export default function DeadlinesPage() {
                                       : s === 'overdue'
                                         ? 'bg-red-500/20 text-red-300'
                                         : s === 'due-soon'
-                                          ? 'bg-amber-500/20 text-amber-300'
+                                          ? 'bg-cyan-500/20 text-cyan-300'
                                           : 'bg-sky-500/15 text-sky-300'
                                   }`}
                                 >
@@ -427,12 +427,12 @@ export default function DeadlinesPage() {
                       )
                     })}
                   </div>
-                  <div className="mt-4 flex flex-wrap gap-3 text-xs text-slate-400">
+                  <div className="mt-4 flex flex-wrap gap-3 text-xs text-stone-400">
                     <span className="inline-flex items-center gap-1">
                       <span className="h-2.5 w-2.5 rounded bg-red-500/60" /> Overdue
                     </span>
                     <span className="inline-flex items-center gap-1">
-                      <span className="h-2.5 w-2.5 rounded bg-amber-500/60" /> Due soon
+                      <span className="h-2.5 w-2.5 rounded bg-cyan-500/60" /> Due soon
                     </span>
                     <span className="inline-flex items-center gap-1">
                       <span className="h-2.5 w-2.5 rounded bg-sky-500/60" /> Upcoming
@@ -440,7 +440,7 @@ export default function DeadlinesPage() {
                     <span className="inline-flex items-center gap-1">
                       <span className="h-2.5 w-2.5 rounded bg-emerald-500/60" /> Filed
                     </span>
-                    <span className="ml-auto text-slate-500">Click a chip to toggle filed.</span>
+                    <span className="ml-auto text-stone-500">Click a chip to toggle filed.</span>
                   </div>
                 </div>
               ) : filtered.length === 0 ? (
@@ -468,9 +468,9 @@ export default function DeadlinesPage() {
                         const n = daysUntil(dl.due_date)
                         return (
                           <TR key={dl.id}>
-                            <TD className="font-medium text-slate-100">{fmtDate(dl.week_ending)}</TD>
+                            <TD className="font-medium text-stone-100">{fmtDate(dl.week_ending)}</TD>
                             <TD>{fmtDate(dl.due_date)}</TD>
-                            <TD className="text-slate-400">
+                            <TD className="text-stone-400">
                               {dl.filed
                                 ? '—'
                                 : n < 0
@@ -528,33 +528,33 @@ export default function DeadlinesPage() {
               {genError}
             </div>
           )}
-          <p className="text-sm text-slate-400">
+          <p className="text-sm text-stone-400">
             Creates one weekly deadline (per Saturday week-ending) across the range for{' '}
-            <span className="text-slate-200">{selectedProject?.name}</span>. Existing weeks are not
+            <span className="text-stone-200">{selectedProject?.name}</span>. Existing weeks are not
             duplicated.
           </p>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
-              <label className="text-xs uppercase tracking-wide text-slate-500">Start date</label>
+              <label className="text-xs uppercase tracking-wide text-stone-500">Start date</label>
               <input
                 type="date"
                 value={genForm.start_date}
                 onChange={(e) => setGenForm((f) => ({ ...f, start_date: e.target.value }))}
-                className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                className="mt-1 w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="text-xs uppercase tracking-wide text-slate-500">End date</label>
+              <label className="text-xs uppercase tracking-wide text-stone-500">End date</label>
               <input
                 type="date"
                 value={genForm.end_date}
                 onChange={(e) => setGenForm((f) => ({ ...f, end_date: e.target.value }))}
-                className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                className="mt-1 w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </div>
           </div>
           <div>
-            <label className="text-xs uppercase tracking-wide text-slate-500">
+            <label className="text-xs uppercase tracking-wide text-stone-500">
               Filing due offset (days after week ending)
             </label>
             <input
@@ -565,9 +565,9 @@ export default function DeadlinesPage() {
               onChange={(e) =>
                 setGenForm((f) => ({ ...f, due_offset_days: Number(e.target.value) }))
               }
-              className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+              className="mt-1 w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             />
-            <p className="mt-1 text-xs text-slate-500">
+            <p className="mt-1 text-xs text-stone-500">
               DBA certified payroll is generally due within 7 days of the week ending.
             </p>
           </div>

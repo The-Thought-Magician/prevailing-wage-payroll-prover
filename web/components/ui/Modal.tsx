@@ -26,24 +26,24 @@ export function Modal({ open, onClose, title, children, footer, className = '' }
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/70 p-4 sm:items-center">
       <div
-        className={`relative w-full max-w-lg rounded-xl border border-slate-800 bg-slate-900 shadow-2xl ${className}`}
+        className={`relative w-full max-w-lg rounded-xl border border-stone-800 bg-stone-900 shadow-2xl ${className}`}
         role="dialog"
         aria-modal="true"
       >
         {title && (
-          <div className="flex items-center justify-between border-b border-slate-800 px-5 py-4">
+          <div className="flex items-center justify-between border-b border-stone-800 px-5 py-4">
             <h2 className="text-base font-semibold text-white">{title}</h2>
             <button
               onClick={onClose}
               aria-label="Close"
-              className="rounded-md px-2 text-slate-500 hover:bg-slate-800 hover:text-white"
+              className="rounded-md px-2 text-stone-500 hover:bg-stone-800 hover:text-white"
             >
               ✕
             </button>
           </div>
         )}
         <div className="px-5 py-4">{children}</div>
-        {footer && <div className="flex justify-end gap-2 border-t border-slate-800 px-5 py-4">{footer}</div>}
+        {footer && <div className="flex justify-end gap-2 border-t border-stone-800 px-5 py-4">{footer}</div>}
       </div>
     </div>
   )

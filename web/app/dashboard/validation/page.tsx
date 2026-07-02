@@ -168,7 +168,7 @@ export default function ValidationPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-1">
         <h1 className="text-2xl font-bold text-white">Validation &amp; Proof</h1>
-        <p className="text-sm text-slate-500">
+        <p className="text-sm text-stone-500">
           Prove a project week against its wage determination. The engine checks base rate, fringe, overtime,
           apprentice ratios and classification mapping, then records every finding.
         </p>
@@ -180,12 +180,12 @@ export default function ValidationPage() {
 
       <Card>
         <CardBody className="flex flex-col gap-3 sm:flex-row sm:items-end">
-          <label className="flex flex-col text-xs font-medium text-slate-400">
+          <label className="flex flex-col text-xs font-medium text-stone-400">
             Project
             <select
               value={projectId}
               onChange={(e) => setProjectId(e.target.value)}
-              className="mt-1 min-w-[16rem] rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-amber-500 focus:outline-none"
+              className="mt-1 min-w-[16rem] rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-cyan-500 focus:outline-none"
             >
               {projects.length === 0 && <option value="">No projects</option>}
               {projects.map((p) => (
@@ -195,13 +195,13 @@ export default function ValidationPage() {
               ))}
             </select>
           </label>
-          <label className="flex flex-col text-xs font-medium text-slate-400">
+          <label className="flex flex-col text-xs font-medium text-stone-400">
             Week ending
             <input
               type="date"
               value={weekEnding}
               onChange={(e) => setWeekEnding(e.target.value)}
-              className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-amber-500 focus:outline-none"
+              className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-cyan-500 focus:outline-none"
             />
           </label>
           <Button onClick={runProve} disabled={running || !projectId || !weekEnding}>
@@ -240,18 +240,18 @@ export default function ValidationPage() {
                     title={`${r.week_ending} — ${r.pass_count} pass / ${r.fail_count} fail`}
                     className="group flex w-full flex-col justify-end"
                   >
-                    <div className="flex h-28 w-full flex-col justify-end overflow-hidden rounded-t bg-slate-800/40">
+                    <div className="flex h-28 w-full flex-col justify-end overflow-hidden rounded-t bg-stone-800/40">
                       <div className="w-full bg-red-500/70" style={{ height: `${failPct}%` }} />
                       <div className="w-full bg-emerald-500/70" style={{ height: `${passPct}%` }} />
                     </div>
-                    <div className="mt-1 truncate text-center text-[10px] text-slate-500 group-hover:text-slate-300">
+                    <div className="mt-1 truncate text-center text-[10px] text-stone-500 group-hover:text-stone-300">
                       {r.week_ending.slice(5)}
                     </div>
                   </button>
                 )
               })}
             </div>
-            <div className="mt-2 flex gap-4 text-xs text-slate-500">
+            <div className="mt-2 flex gap-4 text-xs text-stone-500">
               <span className="flex items-center gap-1"><span className="inline-block h-2 w-2 rounded-sm bg-emerald-500/70" /> pass</span>
               <span className="flex items-center gap-1"><span className="inline-block h-2 w-2 rounded-sm bg-red-500/70" /> fail</span>
             </div>
@@ -289,9 +289,9 @@ export default function ValidationPage() {
                     <TR
                       key={r.id}
                       onClick={() => openRun(r.id)}
-                      className={`cursor-pointer ${selectedId === r.id ? 'bg-amber-500/10' : ''}`}
+                      className={`cursor-pointer ${selectedId === r.id ? 'bg-cyan-500/10' : ''}`}
                     >
-                      <TD className="whitespace-nowrap text-slate-200">{r.week_ending}</TD>
+                      <TD className="whitespace-nowrap text-stone-200">{r.week_ending}</TD>
                       <TD>
                         <Badge tone={r.hard_fail ? 'red' : statusTone(r.status)}>
                           {r.hard_fail ? 'hard fail' : r.status}
@@ -299,7 +299,7 @@ export default function ValidationPage() {
                       </TD>
                       <TD className="text-right text-emerald-300">{num(r.pass_count)}</TD>
                       <TD className="text-right text-red-300">{num(r.fail_count)}</TD>
-                      <TD className="text-right text-amber-300">{money(num(r.total_shortfall))}</TD>
+                      <TD className="text-right text-cyan-300">{money(num(r.total_shortfall))}</TD>
                     </TR>
                   ))}
                 </TBody>
@@ -341,17 +341,17 @@ export default function ValidationPage() {
                 ) : (
                   <div className="space-y-2">
                     {detail.findings.map((f) => (
-                      <div key={f.id} className="rounded-lg border border-slate-800 bg-slate-950/40 px-3 py-2">
+                      <div key={f.id} className="rounded-lg border border-stone-800 bg-stone-950/40 px-3 py-2">
                         <div className="flex flex-wrap items-center gap-2">
                           <Badge tone={severityTone(f.severity)}>{f.severity}</Badge>
-                          <span className="text-xs font-medium text-slate-400">{f.finding_type}</span>
+                          <span className="text-xs font-medium text-stone-400">{f.finding_type}</span>
                           {num(f.shortfall) > 0 && (
-                            <span className="ml-auto text-xs font-semibold text-amber-300">
+                            <span className="ml-auto text-xs font-semibold text-cyan-300">
                               {money(num(f.shortfall))}
                             </span>
                           )}
                         </div>
-                        <p className="mt-1 text-sm text-slate-200">{f.message}</p>
+                        <p className="mt-1 text-sm text-stone-200">{f.message}</p>
                       </div>
                     ))}
                   </div>

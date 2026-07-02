@@ -83,8 +83,8 @@ const OT_RULE_OPTIONS: { value: string; label: string; hint: string }[] = [
 ]
 
 const inputCls =
-  'w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 placeholder-slate-600 focus:border-amber-500/60 focus:outline-none focus:ring-1 focus:ring-amber-500/40'
-const labelCls = 'mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500'
+  'w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 placeholder-stone-600 focus:border-cyan-500/60 focus:outline-none focus:ring-1 focus:ring-cyan-500/40'
+const labelCls = 'mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500'
 
 function otRuleLabel(value: string | null): string {
   if (!value) return '—'
@@ -258,7 +258,7 @@ export default function SettingsPage() {
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-white">Settings</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             Company profiles, overtime rule sets, rate-comparison tolerance, and billing.
           </p>
         </div>
@@ -300,7 +300,7 @@ export default function SettingsPage() {
       <Card>
         <CardHeader>
           <h2 className="text-base font-semibold text-white">Billing & Subscription</h2>
-          <p className="mt-1 text-sm text-slate-400">Manage your plan. All compliance features are available; upgrade for higher limits.</p>
+          <p className="mt-1 text-sm text-stone-400">Manage your plan. All compliance features are available; upgrade for higher limits.</p>
         </CardHeader>
         <CardBody className="space-y-4">
           {billingError && (
@@ -313,7 +313,7 @@ export default function SettingsPage() {
               <div className="text-lg font-semibold text-white">{plan?.name ?? 'Free'}</div>
               {isPro ? <Badge tone="amber">Pro</Badge> : <Badge tone="slate">Free</Badge>}
               {sub?.status && <Badge tone={sub.status === 'active' ? 'green' : 'neutral'}>{sub.status}</Badge>}
-              {plan && <span className="text-sm text-slate-400">{formatMoney(plan.price_cents)}/mo</span>}
+              {plan && <span className="text-sm text-stone-400">{formatMoney(plan.price_cents)}/mo</span>}
             </div>
             <div className="flex flex-wrap gap-2">
               {!stripeEnabled ? (
@@ -337,7 +337,7 @@ export default function SettingsPage() {
         <CardHeader className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h2 className="text-base font-semibold text-white">Company Profiles</h2>
-            <p className="mt-1 text-sm text-slate-400">Signatory details, OT rules, and rate tolerance applied during proof runs.</p>
+            <p className="mt-1 text-sm text-stone-400">Signatory details, OT rules, and rate tolerance applied during proof runs.</p>
           </div>
           <input
             className={`${inputCls} sm:max-w-xs`}
@@ -375,32 +375,32 @@ export default function SettingsPage() {
               <TBody>
                 {filtered.map((c) => (
                   <TR key={c.id}>
-                    <TD className="font-medium text-slate-100">{c.legal_name}</TD>
-                    <TD>{c.fein || <span className="text-slate-600">—</span>}</TD>
+                    <TD className="font-medium text-stone-100">{c.legal_name}</TD>
+                    <TD>{c.fein || <span className="text-stone-600">—</span>}</TD>
                     <TD>
                       {c.city || c.state ? (
-                        <span className="text-slate-300">
+                        <span className="text-stone-300">
                           {[c.city, c.state].filter(Boolean).join(', ')}
                           {c.zip ? ` ${c.zip}` : ''}
                         </span>
                       ) : (
-                        <span className="text-slate-600">—</span>
+                        <span className="text-stone-600">—</span>
                       )}
                     </TD>
                     <TD>
                       {c.signatory_name ? (
-                        <span className="text-slate-300">
+                        <span className="text-stone-300">
                           {c.signatory_name}
-                          {c.signatory_title && <span className="block text-xs text-slate-500">{c.signatory_title}</span>}
+                          {c.signatory_title && <span className="block text-xs text-stone-500">{c.signatory_title}</span>}
                         </span>
                       ) : (
-                        <span className="text-slate-600">—</span>
+                        <span className="text-stone-600">—</span>
                       )}
                     </TD>
                     <TD>
                       <Badge tone="blue">{otRuleLabel(c.ot_rule_set)}</Badge>
                     </TD>
-                    <TD className="text-right tabular-nums text-slate-300">
+                    <TD className="text-right tabular-nums text-stone-300">
                       {formatMoney(c.rate_tolerance_cents)}/hr
                     </TD>
                     <TD className="text-right">
@@ -491,8 +491,8 @@ export default function SettingsPage() {
             </div>
           </div>
 
-          <div className="rounded-lg border border-slate-800 bg-slate-950/60 p-4">
-            <div className="text-xs font-medium uppercase tracking-wide text-slate-500">Statement of Compliance Signatory</div>
+          <div className="rounded-lg border border-stone-800 bg-stone-950/60 p-4">
+            <div className="text-xs font-medium uppercase tracking-wide text-stone-500">Statement of Compliance Signatory</div>
             <div className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
                 <label className={labelCls}>Signatory Name</label>
@@ -515,8 +515,8 @@ export default function SettingsPage() {
             </div>
           </div>
 
-          <div className="rounded-lg border border-slate-800 bg-slate-950/60 p-4">
-            <div className="text-xs font-medium uppercase tracking-wide text-slate-500">Compliance Rules</div>
+          <div className="rounded-lg border border-stone-800 bg-stone-950/60 p-4">
+            <div className="text-xs font-medium uppercase tracking-wide text-stone-500">Compliance Rules</div>
             <div className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
                 <label className={labelCls}>Overtime Rule Set</label>
@@ -531,7 +531,7 @@ export default function SettingsPage() {
                     </option>
                   ))}
                 </select>
-                <p className="mt-1 text-xs text-slate-500">
+                <p className="mt-1 text-xs text-stone-500">
                   {OT_RULE_OPTIONS.find((o) => o.value === form.ot_rule_set)?.hint}
                 </p>
               </div>
@@ -544,7 +544,7 @@ export default function SettingsPage() {
                   onChange={(e) => patchForm({ rate_tolerance_cents: e.target.value.replace(/\D/g, '') })}
                   placeholder="1"
                 />
-                <p className="mt-1 text-xs text-slate-500">
+                <p className="mt-1 text-xs text-stone-500">
                   Underpayments at or below this per-hour amount won&apos;t flag (rounding allowance). Currently{' '}
                   {formatMoney(parseInt(form.rate_tolerance_cents || '0', 10))}/hr.
                 </p>

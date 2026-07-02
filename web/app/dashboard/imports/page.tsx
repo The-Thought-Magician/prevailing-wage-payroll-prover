@@ -221,7 +221,7 @@ export default function ImportsPage() {
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <h1 className="text-xl font-bold text-white">Imports</h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm text-stone-500">
             Import payroll and wage-determination CSV data, or provision a demo dataset with intentional violations.
           </p>
         </div>
@@ -251,7 +251,7 @@ export default function ImportsPage() {
         <CardHeader className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <h2 className="text-base font-semibold text-white">Seed Sample Data</h2>
-            <p className="mt-0.5 text-xs text-slate-500">
+            <p className="mt-0.5 text-xs text-stone-500">
               Provisions a demo company, project, wage determination, worker roster, and payroll ledger seeded with
               intentional compliance violations.
             </p>
@@ -270,10 +270,10 @@ export default function ImportsPage() {
           <form onSubmit={submitImport} className="space-y-5">
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
-                <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+                <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
                   Import type
                 </label>
-                <div className="inline-flex rounded-lg border border-slate-700 bg-slate-800 p-1">
+                <div className="inline-flex rounded-lg border border-stone-700 bg-stone-800 p-1">
                   {(['payroll', 'determination'] as ImportType[]).map((t) => (
                     <button
                       key={t}
@@ -284,7 +284,7 @@ export default function ImportsPage() {
                         setFileName('')
                       }}
                       className={`rounded-md px-3 py-1.5 text-sm font-medium capitalize transition-colors ${
-                        importType === t ? 'bg-amber-500 text-slate-950' : 'text-slate-300 hover:text-white'
+                        importType === t ? 'bg-cyan-500 text-stone-950' : 'text-stone-300 hover:text-white'
                       }`}
                     >
                       {t}
@@ -293,13 +293,13 @@ export default function ImportsPage() {
                 </div>
               </div>
               <div>
-                <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
-                  Project {importType === 'determination' && <span className="text-slate-600">(optional)</span>}
+                <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
+                  Project {importType === 'determination' && <span className="text-stone-600">(optional)</span>}
                 </label>
                 <select
                   value={projectId}
                   onChange={(e) => setProjectId(e.target.value)}
-                  className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                  className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
                 >
                   <option value="">— No project —</option>
                   {projects.map((p) => (
@@ -311,8 +311,8 @@ export default function ImportsPage() {
               </div>
             </div>
 
-            <div className="rounded-lg border border-slate-800 bg-slate-950/40 px-4 py-3">
-              <div className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">Expected columns</div>
+            <div className="rounded-lg border border-stone-800 bg-stone-950/40 px-4 py-3">
+              <div className="mb-2 text-xs font-medium uppercase tracking-wide text-stone-500">Expected columns</div>
               <div className="flex flex-wrap gap-1.5">
                 {expectedColumns.map((c) => (
                   <code
@@ -320,7 +320,7 @@ export default function ImportsPage() {
                     className={`rounded px-1.5 py-0.5 text-xs ${
                       parsed && parsed.headers.includes(c)
                         ? 'bg-emerald-500/15 text-emerald-300'
-                        : 'bg-slate-800 text-slate-400'
+                        : 'bg-stone-800 text-stone-400'
                     }`}
                   >
                     {c}
@@ -330,18 +330,18 @@ export default function ImportsPage() {
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
-              <label className="inline-flex cursor-pointer items-center rounded-lg border border-slate-700 bg-slate-800 px-4 py-2 text-sm font-medium text-slate-200 hover:bg-slate-700">
+              <label className="inline-flex cursor-pointer items-center rounded-lg border border-stone-700 bg-stone-800 px-4 py-2 text-sm font-medium text-stone-200 hover:bg-stone-700">
                 Choose CSV file
                 <input type="file" accept=".csv,text/csv" onChange={onFile} className="hidden" />
               </label>
-              {fileName && <span className="text-sm text-slate-400">{fileName}</span>}
+              {fileName && <span className="text-sm text-stone-400">{fileName}</span>}
               <Button type="button" variant="ghost" onClick={loadSample}>
                 Use sample {importType} CSV
               </Button>
             </div>
 
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
                 CSV content
               </label>
               <textarea
@@ -352,7 +352,7 @@ export default function ImportsPage() {
                 }}
                 rows={8}
                 placeholder={`Paste ${importType} CSV here or choose a file...`}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 font-mono text-xs text-slate-200 focus:border-amber-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 font-mono text-xs text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </div>
 
@@ -366,7 +366,7 @@ export default function ImportsPage() {
                   )}
                 </div>
                 {parsed.rows.length > 0 && (
-                  <div className="rounded-lg border border-slate-800">
+                  <div className="rounded-lg border border-stone-800">
                     <Table>
                       <THead>
                         <TR>
@@ -386,7 +386,7 @@ export default function ImportsPage() {
                       </TBody>
                     </Table>
                     {parsed.rows.length > 5 && (
-                      <div className="px-4 py-2 text-xs text-slate-500">
+                      <div className="px-4 py-2 text-xs text-stone-500">
                         Showing first 5 of {parsed.rows.length} rows.
                       </div>
                     )}
@@ -442,7 +442,7 @@ export default function ImportsPage() {
               <TBody>
                 {jobs.map((j) => (
                   <TR key={j.id}>
-                    <TD className="capitalize text-slate-200">{j.import_type}</TD>
+                    <TD className="capitalize text-stone-200">{j.import_type}</TD>
                     <TD>{projectName(j.project_id)}</TD>
                     <TD>
                       <Badge tone={statusTone(j.status)}>{j.status || 'unknown'}</Badge>
@@ -456,7 +456,7 @@ export default function ImportsPage() {
                         '0'
                       )}
                     </TD>
-                    <TD className="whitespace-nowrap text-xs text-slate-500">
+                    <TD className="whitespace-nowrap text-xs text-stone-500">
                       {j.created_at ? new Date(j.created_at).toLocaleString() : '—'}
                     </TD>
                   </TR>

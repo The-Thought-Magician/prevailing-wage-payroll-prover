@@ -200,7 +200,7 @@ export default function ProjectDetailPage() {
   if (error || !project) {
     return (
       <div className="space-y-4">
-        <Link href="/dashboard/projects" className="text-sm text-amber-400 hover:text-amber-300">
+        <Link href="/dashboard/projects" className="text-sm text-cyan-400 hover:text-cyan-300">
           ← Back to projects
         </Link>
         <Card className="border-red-500/30">
@@ -218,7 +218,7 @@ export default function ProjectDetailPage() {
   return (
     <div className="space-y-6">
       <div>
-        <Link href="/dashboard/projects" className="text-sm text-amber-400 hover:text-amber-300">
+        <Link href="/dashboard/projects" className="text-sm text-cyan-400 hover:text-cyan-300">
           ← Back to projects
         </Link>
         <div className="mt-2 flex flex-wrap items-start justify-between gap-3">
@@ -229,7 +229,7 @@ export default function ProjectDetailPage() {
                 {(project.status || 'active').replace(/_/g, ' ')}
               </Badge>
             </div>
-            <p className="mt-1 text-sm text-slate-500">
+            <p className="mt-1 text-sm text-stone-500">
               {[project.awarding_agency, project.contract_number, [project.county, project.state].filter(Boolean).join(', ')]
                 .filter(Boolean)
                 .join(' · ') || 'No contract metadata'}
@@ -258,7 +258,7 @@ export default function ProjectDetailPage() {
           label="Open findings"
           value={num(health?.open_findings)}
           tone={num(health?.open_findings) > 0 ? 'red' : 'green'}
-          hint={<Link href={`/dashboard/findings`} className="text-amber-400 hover:text-amber-300">View findings →</Link>}
+          hint={<Link href={`/dashboard/findings`} className="text-cyan-400 hover:text-cyan-300">View findings →</Link>}
         />
         <Stat
           label="Weeks filed / due"
@@ -270,7 +270,7 @@ export default function ProjectDetailPage() {
           label="Restitution outstanding"
           value={dollars(restitution)}
           tone={restitution > 0 ? 'red' : 'green'}
-          hint={<Link href={`/dashboard/restitution`} className="text-amber-400 hover:text-amber-300">Worksheets →</Link>}
+          hint={<Link href={`/dashboard/restitution`} className="text-cyan-400 hover:text-cyan-300">Worksheets →</Link>}
         />
       </div>
 
@@ -289,7 +289,7 @@ export default function ProjectDetailPage() {
             <Detail label="Period" value={`${project.start_date || '—'} → ${project.end_date || '—'}`} />
             {Array.isArray(project.crafts) && project.crafts.length > 0 && (
               <div>
-                <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Crafts</span>
+                <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Crafts</span>
                 <div className="flex flex-wrap gap-1">
                   {project.crafts.map((c) => (
                     <Badge key={c} tone="slate">
@@ -306,15 +306,15 @@ export default function ProjectDetailPage() {
         <Card className="lg:col-span-2">
           <CardHeader className="flex items-center justify-between">
             <h2 className="text-sm font-semibold text-white">Wage determinations</h2>
-            <Link href="/dashboard/determinations" className="text-xs font-medium text-amber-400 hover:text-amber-300">
+            <Link href="/dashboard/determinations" className="text-xs font-medium text-cyan-400 hover:text-cyan-300">
               Manage →
             </Link>
           </CardHeader>
           <CardBody className="p-0">
             {determinations.length === 0 ? (
-              <div className="px-5 py-8 text-center text-sm text-slate-500">
+              <div className="px-5 py-8 text-center text-sm text-stone-500">
                 No determinations attached to this project.{' '}
-                <Link href="/dashboard/determinations" className="text-amber-400 hover:text-amber-300">
+                <Link href="/dashboard/determinations" className="text-cyan-400 hover:text-cyan-300">
                   Add one
                 </Link>
                 .
@@ -335,16 +335,16 @@ export default function ProjectDetailPage() {
                   {determinations.map((d) => (
                     <TR key={d.id}>
                       <TD>
-                        <Link href={`/dashboard/determinations/${d.id}`} className="font-medium text-slate-100 hover:text-amber-300">
+                        <Link href={`/dashboard/determinations/${d.id}`} className="font-medium text-stone-100 hover:text-cyan-300">
                           {d.wd_number || d.id.slice(0, 8)}
                         </Link>
                       </TD>
-                      <TD className="text-slate-400">{d.modification_number || '—'}</TD>
-                      <TD className="text-slate-400">
+                      <TD className="text-stone-400">{d.modification_number || '—'}</TD>
+                      <TD className="text-stone-400">
                         {[d.locality, d.county, d.state].filter(Boolean).join(', ') || '—'}
                       </TD>
-                      <TD className="text-slate-400">{d.schedule_type || '—'}</TD>
-                      <TD className="text-slate-400">{d.effective_date || d.decision_date || '—'}</TD>
+                      <TD className="text-stone-400">{d.schedule_type || '—'}</TD>
+                      <TD className="text-stone-400">{d.effective_date || d.decision_date || '—'}</TD>
                       <TD className="text-right">
                         <Badge tone={d.is_active ? 'green' : 'slate'}>{d.is_active ? 'Active' : 'Superseded'}</Badge>
                       </TD>
@@ -362,23 +362,23 @@ export default function ProjectDetailPage() {
         <CardHeader className="flex items-center justify-between">
           <h2 className="text-sm font-semibold text-white">Weeks filed vs due</h2>
           <div className="flex gap-3 text-xs">
-            <Link href="/dashboard/ledger" className="font-medium text-amber-400 hover:text-amber-300">
+            <Link href="/dashboard/ledger" className="font-medium text-cyan-400 hover:text-cyan-300">
               Ledger →
             </Link>
-            <Link href="/dashboard/deadlines" className="font-medium text-amber-400 hover:text-amber-300">
+            <Link href="/dashboard/deadlines" className="font-medium text-cyan-400 hover:text-cyan-300">
               Deadlines →
             </Link>
           </div>
         </CardHeader>
         <CardBody className="p-0">
           {weeks.length === 0 ? (
-            <div className="px-5 py-8 text-center text-sm text-slate-500">
+            <div className="px-5 py-8 text-center text-sm text-stone-500">
               No weekly data yet. Enter payroll in the{' '}
-              <Link href="/dashboard/ledger" className="text-amber-400 hover:text-amber-300">
+              <Link href="/dashboard/ledger" className="text-cyan-400 hover:text-cyan-300">
                 ledger
               </Link>{' '}
               and generate{' '}
-              <Link href="/dashboard/deadlines" className="text-amber-400 hover:text-amber-300">
+              <Link href="/dashboard/deadlines" className="text-cyan-400 hover:text-cyan-300">
                 deadlines
               </Link>
               .
@@ -398,19 +398,19 @@ export default function ProjectDetailPage() {
               <TBody>
                 {weeks.map((w, i) => (
                   <TR key={w.week_ending || i}>
-                    <TD className="font-medium text-slate-200">{w.week_ending || '—'}</TD>
-                    <TD className="text-slate-400">{w.due_date || '—'}</TD>
-                    <TD className="text-right tabular-nums text-slate-400">{num(w.lines)}</TD>
+                    <TD className="font-medium text-stone-200">{w.week_ending || '—'}</TD>
+                    <TD className="text-stone-400">{w.due_date || '—'}</TD>
+                    <TD className="text-right tabular-nums text-stone-400">{num(w.lines)}</TD>
                     <TD className="text-right tabular-nums">
                       <span className="text-emerald-400">{num(w.pass_count)}</span>
-                      <span className="text-slate-600"> / </span>
-                      <span className={num(w.fail_count) > 0 ? 'text-red-300' : 'text-slate-500'}>{num(w.fail_count)}</span>
+                      <span className="text-stone-600"> / </span>
+                      <span className={num(w.fail_count) > 0 ? 'text-red-300' : 'text-stone-500'}>{num(w.fail_count)}</span>
                     </TD>
                     <TD className="text-right tabular-nums">
                       {num(w.restitution_outstanding) > 0 ? (
-                        <span className="text-amber-300">{dollars(w.restitution_outstanding)}</span>
+                        <span className="text-cyan-300">{dollars(w.restitution_outstanding)}</span>
                       ) : (
-                        <span className="text-slate-500">—</span>
+                        <span className="text-stone-500">—</span>
                       )}
                     </TD>
                     <TD className="text-right">
@@ -535,7 +535,7 @@ export default function ProjectDetailPage() {
           </>
         }
       >
-        <p className="text-sm text-slate-300">
+        <p className="text-sm text-stone-300">
           Delete <span className="font-semibold text-white">{project.name}</span>? This removes the project and its
           associated wage determinations, payroll, findings, and filings. This cannot be undone.
         </p>
@@ -545,14 +545,14 @@ export default function ProjectDetailPage() {
 }
 
 const inputCls =
-  'w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-amber-500 focus:outline-none'
+  'w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none'
 
 function Field({ label, required, children }: { label: string; required?: boolean; children: React.ReactNode }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
         {label}
-        {required && <span className="text-amber-400"> *</span>}
+        {required && <span className="text-cyan-400"> *</span>}
       </span>
       {children}
     </label>
@@ -562,8 +562,8 @@ function Field({ label, required, children }: { label: string; required?: boolea
 function Detail({ label, value }: { label: string; value: React.ReactNode }) {
   return (
     <div className="flex items-center justify-between gap-3">
-      <span className="text-xs font-medium uppercase tracking-wide text-slate-500">{label}</span>
-      <span className="text-right capitalize text-slate-200">{value}</span>
+      <span className="text-xs font-medium uppercase tracking-wide text-stone-500">{label}</span>
+      <span className="text-right capitalize text-stone-200">{value}</span>
     </div>
   )
 }

@@ -189,7 +189,7 @@ export default function FindingsPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-1">
         <h1 className="text-2xl font-bold text-white">Findings &amp; Violations</h1>
-        <p className="text-sm text-slate-500">
+        <p className="text-sm text-stone-500">
           Every wage, fringe, overtime, apprentice-ratio and classification violation surfaced by validation. Triage,
           assign and resolve.
         </p>
@@ -210,12 +210,12 @@ export default function FindingsPage() {
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         <Card className="lg:col-span-2">
           <CardBody className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-end">
-            <label className="flex flex-col text-xs font-medium text-slate-400">
+            <label className="flex flex-col text-xs font-medium text-stone-400">
               Project
               <select
                 value={projectId}
                 onChange={(e) => setProjectId(e.target.value)}
-                className="mt-1 min-w-[12rem] rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-amber-500 focus:outline-none"
+                className="mt-1 min-w-[12rem] rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-cyan-500 focus:outline-none"
               >
                 <option value="">All projects</option>
                 {projects.map((p) => (
@@ -225,12 +225,12 @@ export default function FindingsPage() {
                 ))}
               </select>
             </label>
-            <label className="flex flex-col text-xs font-medium text-slate-400">
+            <label className="flex flex-col text-xs font-medium text-stone-400">
               Status
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-amber-500 focus:outline-none"
+                className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-cyan-500 focus:outline-none"
               >
                 <option value="">All statuses</option>
                 {STATUSES.map((s) => (
@@ -240,12 +240,12 @@ export default function FindingsPage() {
                 ))}
               </select>
             </label>
-            <label className="flex flex-col text-xs font-medium text-slate-400">
+            <label className="flex flex-col text-xs font-medium text-stone-400">
               Type
               <select
                 value={typeFilter}
                 onChange={(e) => setTypeFilter(e.target.value)}
-                className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-amber-500 focus:outline-none"
+                className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-cyan-500 focus:outline-none"
               >
                 <option value="">All types</option>
                 {types.map((t) => (
@@ -255,13 +255,13 @@ export default function FindingsPage() {
                 ))}
               </select>
             </label>
-            <label className="flex flex-col text-xs font-medium text-slate-400 sm:flex-1">
+            <label className="flex flex-col text-xs font-medium text-stone-400 sm:flex-1">
               Search
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Message, type, assignee..."
-                className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-600 focus:border-amber-500 focus:outline-none"
+                className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none"
               />
             </label>
           </CardBody>
@@ -273,17 +273,17 @@ export default function FindingsPage() {
           </CardHeader>
           <CardBody>
             {byType.rows.length === 0 ? (
-              <p className="text-sm text-slate-500">No findings.</p>
+              <p className="text-sm text-stone-500">No findings.</p>
             ) : (
               <div className="space-y-2">
                 {byType.rows.map((r) => (
                   <div key={r.type}>
-                    <div className="flex justify-between text-xs text-slate-400">
+                    <div className="flex justify-between text-xs text-stone-400">
                       <span className="truncate">{r.type}</span>
                       <span>{r.count}</span>
                     </div>
-                    <div className="mt-1 h-2 w-full overflow-hidden rounded bg-slate-800">
-                      <div className="h-full rounded bg-amber-500" style={{ width: `${(r.count / byType.max) * 100}%` }} />
+                    <div className="mt-1 h-2 w-full overflow-hidden rounded bg-stone-800">
+                      <div className="h-full rounded bg-cyan-500" style={{ width: `${(r.count / byType.max) * 100}%` }} />
                     </div>
                   </div>
                 ))}
@@ -301,7 +301,7 @@ export default function FindingsPage() {
           </div>
           {selected.size > 0 && (
             <div className="flex items-center gap-2">
-              <span className="text-xs text-slate-400">{selected.size} selected</span>
+              <span className="text-xs text-stone-400">{selected.size} selected</span>
               <Button onClick={bulkResolve} disabled={busy}>
                 {busy ? 'Working...' : 'Resolve selected'}
               </Button>
@@ -328,7 +328,7 @@ export default function FindingsPage() {
                       type="checkbox"
                       checked={allSelected}
                       onChange={toggleAll}
-                      className="h-4 w-4 rounded border-slate-700 bg-slate-950 accent-amber-500"
+                      className="h-4 w-4 rounded border-stone-700 bg-stone-950 accent-cyan-500"
                     />
                   </TH>
                   <TH>Severity</TH>
@@ -350,21 +350,21 @@ export default function FindingsPage() {
                         type="checkbox"
                         checked={selected.has(f.id)}
                         onChange={() => toggle(f.id)}
-                        className="h-4 w-4 rounded border-slate-700 bg-slate-950 accent-amber-500"
+                        className="h-4 w-4 rounded border-stone-700 bg-stone-950 accent-cyan-500"
                       />
                     </TD>
                     <TD>
                       <Badge tone={severityTone(f.severity)}>{f.severity}</Badge>
                     </TD>
-                    <TD className="whitespace-nowrap text-slate-300">{f.finding_type}</TD>
-                    <TD className="max-w-md text-slate-200">{f.message}</TD>
-                    <TD className="whitespace-nowrap text-slate-400">{projectName(f.project_id)}</TD>
-                    <TD className="whitespace-nowrap text-slate-400">{f.week_ending ?? '—'}</TD>
-                    <TD className="text-right text-amber-300">{num(f.shortfall) ? money(num(f.shortfall)) : '—'}</TD>
+                    <TD className="whitespace-nowrap text-stone-300">{f.finding_type}</TD>
+                    <TD className="max-w-md text-stone-200">{f.message}</TD>
+                    <TD className="whitespace-nowrap text-stone-400">{projectName(f.project_id)}</TD>
+                    <TD className="whitespace-nowrap text-stone-400">{f.week_ending ?? '—'}</TD>
+                    <TD className="text-right text-cyan-300">{num(f.shortfall) ? money(num(f.shortfall)) : '—'}</TD>
                     <TD>
                       <Badge tone={statusTone(f.status)}>{f.status}</Badge>
                     </TD>
-                    <TD className="whitespace-nowrap text-slate-400">{f.assignee || '—'}</TD>
+                    <TD className="whitespace-nowrap text-stone-400">{f.assignee || '—'}</TD>
                     <TD className="text-right">
                       <Button
                         variant="ghost"
@@ -451,24 +451,24 @@ function TriageModal({
           {error}
         </div>
       )}
-      <div className="mb-4 rounded-lg border border-slate-800 bg-slate-950/40 px-3 py-2">
+      <div className="mb-4 rounded-lg border border-stone-800 bg-stone-950/40 px-3 py-2">
         <div className="flex flex-wrap items-center gap-2">
           <Badge tone={severityTone(finding.severity)}>{finding.severity}</Badge>
-          <span className="text-xs font-medium text-slate-400">{finding.finding_type}</span>
+          <span className="text-xs font-medium text-stone-400">{finding.finding_type}</span>
           {num(finding.shortfall) > 0 && (
-            <span className="ml-auto text-xs font-semibold text-amber-300">{money(num(finding.shortfall))}</span>
+            <span className="ml-auto text-xs font-semibold text-cyan-300">{money(num(finding.shortfall))}</span>
           )}
         </div>
-        <p className="mt-1 text-sm text-slate-200">{finding.message}</p>
+        <p className="mt-1 text-sm text-stone-200">{finding.message}</p>
       </div>
 
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        <label className="flex flex-col text-xs font-medium text-slate-400">
+        <label className="flex flex-col text-xs font-medium text-stone-400">
           Status
           <select
             value={status}
             onChange={(e) => setStatus(e.target.value)}
-            className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-amber-500 focus:outline-none"
+            className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-cyan-500 focus:outline-none"
           >
             {STATUSES.map((s) => (
               <option key={s} value={s}>
@@ -477,24 +477,24 @@ function TriageModal({
             ))}
           </select>
         </label>
-        <label className="flex flex-col text-xs font-medium text-slate-400">
+        <label className="flex flex-col text-xs font-medium text-stone-400">
           Assignee
           <input
             value={assignee}
             onChange={(e) => setAssignee(e.target.value)}
             placeholder="Who owns this?"
-            className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-600 focus:border-amber-500 focus:outline-none"
+            className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none"
           />
         </label>
       </div>
-      <label className="mt-3 flex flex-col text-xs font-medium text-slate-400">
+      <label className="mt-3 flex flex-col text-xs font-medium text-stone-400">
         Resolution notes
         <textarea
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
           rows={3}
           placeholder="How was this resolved or why is it waived?"
-          className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-600 focus:border-amber-500 focus:outline-none"
+          className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none"
         />
       </label>
     </Modal>

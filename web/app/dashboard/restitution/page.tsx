@@ -229,7 +229,7 @@ export default function RestitutionPage() {
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-white">Back-Wage Restitution</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             Build worksheets from validated shortfalls, track back-wage payments per worker, and close out exposure.
           </p>
         </div>
@@ -258,7 +258,7 @@ export default function RestitutionPage() {
             <select
               value={projectFilter}
               onChange={(e) => setProjectFilter(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+              className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             >
               <option value="">All projects</option>
               {projects.map((p) => (
@@ -270,7 +270,7 @@ export default function RestitutionPage() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+              className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             >
               <option value="">All statuses</option>
               <option value="open">Open</option>
@@ -283,7 +283,7 @@ export default function RestitutionPage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search project or period…"
-            className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-amber-500 focus:outline-none sm:w-72"
+            className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none sm:w-72"
           />
         </CardHeader>
         <CardBody className="p-0">
@@ -332,7 +332,7 @@ export default function RestitutionPage() {
               <TBody>
                 {filtered.map((w) => (
                   <TR key={w.id} className="cursor-pointer" onClick={() => openDetail(w.id)}>
-                    <TD className="font-medium text-slate-200">{projectName(w.project_id)}</TD>
+                    <TD className="font-medium text-stone-200">{projectName(w.project_id)}</TD>
                     <TD>
                       {w.period_start || '—'} → {w.period_end || '—'}
                     </TD>
@@ -383,16 +383,16 @@ export default function RestitutionPage() {
         }
       >
         <div className="space-y-4">
-          <p className="text-sm text-slate-400">
+          <p className="text-sm text-stone-400">
             Aggregates base, fringe, and overtime shortfalls from validation findings across the period into per-worker
             restitution line items.
           </p>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Project</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Project</label>
             <select
               value={genProject}
               onChange={(e) => setGenProject(e.target.value)}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             >
               <option value="">Select project…</option>
               {projects.map((p) => (
@@ -404,25 +404,25 @@ export default function RestitutionPage() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
                 Period Start
               </label>
               <input
                 type="date"
                 value={genStart}
                 onChange={(e) => setGenStart(e.target.value)}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
                 Period End
               </label>
               <input
                 type="date"
                 value={genEnd}
                 onChange={(e) => setGenEnd(e.target.value)}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </div>
           </div>
@@ -449,8 +449,8 @@ export default function RestitutionPage() {
           <EmptyState title="Could not load worksheet" description={detailError} />
         ) : detail ? (
           <div className="space-y-5">
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-slate-400">
-              <span className="font-medium text-slate-200">{projectName(detail.project_id)}</span>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-stone-400">
+              <span className="font-medium text-stone-200">{projectName(detail.project_id)}</span>
               <span>
                 {detail.period_start || '—'} → {detail.period_end || '—'}
               </span>
@@ -472,13 +472,13 @@ export default function RestitutionPage() {
 
             {/* progress bar */}
             <div>
-              <div className="mb-1 flex justify-between text-xs text-slate-500">
+              <div className="mb-1 flex justify-between text-xs text-stone-500">
                 <span>Payment progress</span>
                 <span>
                   {detailStats.owed > 0 ? Math.round((detailStats.paid / detailStats.owed) * 100) : 100}%
                 </span>
               </div>
-              <div className="h-2 w-full overflow-hidden rounded-full bg-slate-800">
+              <div className="h-2 w-full overflow-hidden rounded-full bg-stone-800">
                 <div
                   className="h-full bg-emerald-500"
                   style={{
@@ -509,11 +509,11 @@ export default function RestitutionPage() {
                 <TBody>
                   {(detail.items || []).map((it) => (
                     <TR key={it.id}>
-                      <TD className="font-medium text-slate-200">{itemName(it)}</TD>
+                      <TD className="font-medium text-stone-200">{itemName(it)}</TD>
                       <TD className="text-right tabular-nums">{dollars(it.base_shortfall)}</TD>
                       <TD className="text-right tabular-nums">{dollars(it.fringe_shortfall)}</TD>
                       <TD className="text-right tabular-nums">{dollars(it.ot_shortfall)}</TD>
-                      <TD className="text-right tabular-nums text-slate-100">{dollars(it.total_shortfall)}</TD>
+                      <TD className="text-right tabular-nums text-stone-100">{dollars(it.total_shortfall)}</TD>
                       <TD>
                         {it.paid ? (
                           <Badge tone="green">
@@ -565,21 +565,21 @@ export default function RestitutionPage() {
       >
         {payItem && (
           <div className="space-y-4">
-            <div className="rounded-lg border border-slate-800 bg-slate-950 p-3 text-sm">
-              <div className="font-medium text-slate-200">{itemName(payItem)}</div>
-              <div className="mt-1 text-slate-400">
-                Total owed: <span className="text-slate-100">{dollars(payItem.total_shortfall)}</span>
+            <div className="rounded-lg border border-stone-800 bg-stone-950 p-3 text-sm">
+              <div className="font-medium text-stone-200">{itemName(payItem)}</div>
+              <div className="mt-1 text-stone-400">
+                Total owed: <span className="text-stone-100">{dollars(payItem.total_shortfall)}</span>
               </div>
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
                 Payment Reference
               </label>
               <input
                 value={payRef}
                 onChange={(e) => setPayRef(e.target.value)}
                 placeholder="Check #, ACH ID, or pay-period reference"
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-amber-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none"
               />
             </div>
             {payError && <p className="text-sm text-red-400">{payError}</p>}

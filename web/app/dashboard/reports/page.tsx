@@ -42,7 +42,7 @@ const EMERALD = '#34d399'
 function HBar({ value, max, color }: { value: number; max: number; color: string }) {
   const pct = max > 0 ? Math.max(2, Math.round((value / max) * 100)) : 0
   return (
-    <div className="h-2.5 w-full overflow-hidden rounded-full bg-slate-800">
+    <div className="h-2.5 w-full overflow-hidden rounded-full bg-stone-800">
       <div className="h-full rounded-full" style={{ width: `${pct}%`, backgroundColor: color }} />
     </div>
   )
@@ -188,7 +188,7 @@ export default function ReportsPage() {
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <h1 className="text-xl font-bold text-white">Reports &amp; Analytics</h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm text-stone-500">
             Labor distribution, fringe delivery, apprentice utilization, and outstanding restitution exposure.
           </p>
         </div>
@@ -196,7 +196,7 @@ export default function ReportsPage() {
           <select
             value={projectId}
             onChange={(e) => setProjectId(e.target.value)}
-            className="rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+            className="rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
           >
             <option value="">All projects</option>
             {projects.map((p) => (
@@ -240,8 +240,8 @@ export default function ReportsPage() {
             onClick={() => setTab(t.key)}
             className={`rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors ${
               tab === t.key
-                ? 'border-amber-500/40 bg-amber-500/15 text-amber-300'
-                : 'border-slate-800 bg-slate-900 text-slate-400 hover:text-white'
+                ? 'border-cyan-500/40 bg-cyan-500/15 text-cyan-300'
+                : 'border-stone-800 bg-stone-900 text-stone-400 hover:text-white'
             }`}
           >
             {t.label}
@@ -275,10 +275,10 @@ export default function ReportsPage() {
                     <TBody>
                       {laborRows.map((r, i) => (
                         <TR key={i}>
-                          <TD className="font-medium text-slate-200">{r.label}</TD>
+                          <TD className="font-medium text-stone-200">{r.label}</TD>
                           <TD className="text-right">{r.hours.toLocaleString()}</TD>
                           <TD className="text-right">{r.workers || '—'}</TD>
-                          <TD className="text-right text-slate-100">{usd(r.cost)}</TD>
+                          <TD className="text-right text-stone-100">{usd(r.cost)}</TD>
                           <TD>
                             <HBar value={r.cost} max={laborMaxCost} color={AMBER} />
                           </TD>
@@ -295,7 +295,7 @@ export default function ReportsPage() {
             <>
               <CardHeader>
                 <h2 className="text-base font-semibold text-white">Fringe Cash vs Plan</h2>
-                <p className="mt-0.5 text-xs text-slate-500">
+                <p className="mt-0.5 text-xs text-stone-500">
                   Cash {usd(fringeTotalCash)} · Plan {usd(fringeTotalPlan)}
                 </p>
               </CardHeader>
@@ -305,7 +305,7 @@ export default function ReportsPage() {
                 ) : (
                   <div className="space-y-4">
                     {fringeGrand > 0 && (
-                      <div className="flex h-4 w-full overflow-hidden rounded-full bg-slate-800">
+                      <div className="flex h-4 w-full overflow-hidden rounded-full bg-stone-800">
                         <div
                           className="h-full"
                           style={{ width: `${(fringeTotalCash / fringeGrand) * 100}%`, backgroundColor: SKY }}
@@ -318,7 +318,7 @@ export default function ReportsPage() {
                         />
                       </div>
                     )}
-                    <div className="flex gap-4 text-xs text-slate-400">
+                    <div className="flex gap-4 text-xs text-stone-400">
                       <span className="inline-flex items-center gap-1.5">
                         <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: SKY }} /> Cash in lieu
                       </span>
@@ -341,12 +341,12 @@ export default function ReportsPage() {
                           const total = r.cash + r.plan
                           return (
                             <TR key={i}>
-                              <TD className="font-medium text-slate-200">{r.label}</TD>
+                              <TD className="font-medium text-stone-200">{r.label}</TD>
                               <TD className="text-right text-sky-300">{usdPrecise(r.cash)}</TD>
                               <TD className="text-right text-emerald-300">{usdPrecise(r.plan)}</TD>
-                              <TD className="text-right text-slate-100">{usdPrecise(total)}</TD>
+                              <TD className="text-right text-stone-100">{usdPrecise(total)}</TD>
                               <TD>
-                                <div className="flex h-2.5 w-full overflow-hidden rounded-full bg-slate-800">
+                                <div className="flex h-2.5 w-full overflow-hidden rounded-full bg-stone-800">
                                   {total > 0 && (
                                     <>
                                       <div
@@ -376,7 +376,7 @@ export default function ReportsPage() {
             <>
               <CardHeader>
                 <h2 className="text-base font-semibold text-white">Apprentice Utilization</h2>
-                <p className="mt-0.5 text-xs text-slate-500">Apprentice-to-journeyworker hour ratios.</p>
+                <p className="mt-0.5 text-xs text-stone-500">Apprentice-to-journeyworker hour ratios.</p>
               </CardHeader>
               <CardBody>
                 {apprenticeRows.length === 0 ? (
@@ -398,8 +398,8 @@ export default function ReportsPage() {
                         const meets = r.required <= 0 || r.ratio <= r.required + 1e-9
                         return (
                           <TR key={i}>
-                            <TD className="font-medium text-slate-200">{r.label}</TD>
-                            <TD className="text-right text-amber-300">{r.appr.toLocaleString()}</TD>
+                            <TD className="font-medium text-stone-200">{r.label}</TD>
+                            <TD className="text-right text-cyan-300">{r.appr.toLocaleString()}</TD>
                             <TD className="text-right">{r.journey.toLocaleString()}</TD>
                             <TD className="text-right">{r.ratio ? r.ratio.toFixed(2) : '—'}</TD>
                             <TD className="text-right">{r.required ? r.required.toFixed(2) : '—'}</TD>
@@ -424,7 +424,7 @@ export default function ReportsPage() {
             <>
               <CardHeader className="flex flex-wrap items-center justify-between gap-2">
                 <h2 className="text-base font-semibold text-white">Restitution Exposure</h2>
-                <span className="text-sm text-slate-400">
+                <span className="text-sm text-stone-400">
                   Total {usd(restitutionTotal)} · Outstanding{' '}
                   <span className="text-red-300">{usd(restitutionOutstanding)}</span>
                 </span>
@@ -448,11 +448,11 @@ export default function ReportsPage() {
                     <TBody>
                       {restitutionRows.map((r, i) => (
                         <TR key={i}>
-                          <TD className="font-medium text-slate-200">{r.label}</TD>
+                          <TD className="font-medium text-stone-200">{r.label}</TD>
                           <TD className="text-right">{usdPrecise(r.base)}</TD>
                           <TD className="text-right">{usdPrecise(r.fringeShort)}</TD>
                           <TD className="text-right">{usdPrecise(r.ot)}</TD>
-                          <TD className="text-right text-slate-100">{usdPrecise(r.total)}</TD>
+                          <TD className="text-right text-stone-100">{usdPrecise(r.total)}</TD>
                           <TD>
                             <HBar value={r.total} max={restitutionMax} color={r.paid ? EMERALD : '#f87171'} />
                           </TD>

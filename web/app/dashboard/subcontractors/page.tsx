@@ -293,7 +293,7 @@ export default function SubcontractorsPage() {
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-white">Subcontractors</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             Track lower-tier subs and their weekly certified-payroll filings per project.
           </p>
         </div>
@@ -328,11 +328,11 @@ export default function SubcontractorsPage() {
           <Card>
             <CardHeader className="flex flex-wrap items-center gap-3">
               <div className="flex flex-col">
-                <label className="text-xs uppercase tracking-wide text-slate-500">Project</label>
+                <label className="text-xs uppercase tracking-wide text-stone-500">Project</label>
                 <select
                   value={projectId}
                   onChange={(e) => setProjectId(e.target.value)}
-                  className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                  className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
                 >
                   {projects.map((p) => (
                     <option key={p.id} value={p.id}>
@@ -343,11 +343,11 @@ export default function SubcontractorsPage() {
                 </select>
               </div>
               <div className="flex flex-col">
-                <label className="text-xs uppercase tracking-wide text-slate-500">Tier</label>
+                <label className="text-xs uppercase tracking-wide text-stone-500">Tier</label>
                 <select
                   value={tierFilter}
                   onChange={(e) => setTierFilter(e.target.value)}
-                  className="mt-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                  className="mt-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
                 >
                   <option value="">All tiers</option>
                   {Array.from(new Set(subs.map((s) => s.tier)))
@@ -360,12 +360,12 @@ export default function SubcontractorsPage() {
                 </select>
               </div>
               <div className="flex flex-1 flex-col">
-                <label className="text-xs uppercase tracking-wide text-slate-500">Search</label>
+                <label className="text-xs uppercase tracking-wide text-stone-500">Search</label>
                 <input
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Name, contact, or email…"
-                  className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-amber-500 focus:outline-none"
+                  className="mt-1 w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none"
                 />
               </div>
             </CardHeader>
@@ -412,14 +412,14 @@ export default function SubcontractorsPage() {
                         const filed = f.filter((x) => x.filed).length
                         return (
                           <TR key={s.id}>
-                            <TD className="font-medium text-slate-100">{s.name}</TD>
+                            <TD className="font-medium text-stone-100">{s.name}</TD>
                             <TD>
                               <Badge tone={tierTone(s.tier)}>Tier {s.tier}</Badge>
                             </TD>
                             <TD>
                               {s.contact_name || '—'}
                               {s.contact_email && (
-                                <div className="text-xs text-slate-500">{s.contact_email}</div>
+                                <div className="text-xs text-stone-500">{s.contact_email}</div>
                               )}
                             </TD>
                             <TD className="text-right tabular-nums">
@@ -472,20 +472,20 @@ export default function SubcontractorsPage() {
             </div>
           )}
           <div>
-            <label className="text-xs uppercase tracking-wide text-slate-500">Legal name</label>
+            <label className="text-xs uppercase tracking-wide text-stone-500">Legal name</label>
             <input
               value={form.name}
               onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-              className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+              className="mt-1 w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               placeholder="Acme Electrical LLC"
             />
           </div>
           <div>
-            <label className="text-xs uppercase tracking-wide text-slate-500">Tier</label>
+            <label className="text-xs uppercase tracking-wide text-stone-500">Tier</label>
             <select
               value={form.tier}
               onChange={(e) => setForm((f) => ({ ...f, tier: Number(e.target.value) }))}
-              className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+              className="mt-1 w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             >
               {[1, 2, 3, 4, 5].map((t) => (
                 <option key={t} value={t}>
@@ -497,21 +497,21 @@ export default function SubcontractorsPage() {
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
-              <label className="text-xs uppercase tracking-wide text-slate-500">Contact name</label>
+              <label className="text-xs uppercase tracking-wide text-stone-500">Contact name</label>
               <input
                 value={form.contact_name}
                 onChange={(e) => setForm((f) => ({ ...f, contact_name: e.target.value }))}
-                className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                className="mt-1 w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
                 placeholder="Jane Doe"
               />
             </div>
             <div>
-              <label className="text-xs uppercase tracking-wide text-slate-500">Contact email</label>
+              <label className="text-xs uppercase tracking-wide text-stone-500">Contact email</label>
               <input
                 type="email"
                 value={form.contact_email}
                 onChange={(e) => setForm((f) => ({ ...f, contact_email: e.target.value }))}
-                className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                className="mt-1 w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
                 placeholder="jane@acme.com"
               />
             </div>
@@ -533,7 +533,7 @@ export default function SubcontractorsPage() {
       >
         {filingsSub && (
           <div className="space-y-3">
-            <p className="text-sm text-slate-400">
+            <p className="text-sm text-stone-400">
               Toggle each week to mark this sub&apos;s certified payroll as filed. Week-endings span
               the project&apos;s contract dates (Saturdays).
             </p>
@@ -547,17 +547,17 @@ export default function SubcontractorsPage() {
                   return (
                     <div
                       key={wk}
-                      className="flex items-center justify-between rounded-lg border border-slate-800 bg-slate-950/60 px-3 py-2"
+                      className="flex items-center justify-between rounded-lg border border-stone-800 bg-stone-950/60 px-3 py-2"
                     >
                       <div className="flex items-center gap-3">
-                        <span className="font-mono text-sm text-slate-200">{wk}</span>
+                        <span className="font-mono text-sm text-stone-200">{wk}</span>
                         {filed ? (
                           <Badge tone="green">Filed</Badge>
                         ) : (
                           <Badge tone="amber">Pending</Badge>
                         )}
                         {row?.filed_at && (
-                          <span className="text-xs text-slate-500">{fmtDate(row.filed_at)}</span>
+                          <span className="text-xs text-stone-500">{fmtDate(row.filed_at)}</span>
                         )}
                       </div>
                       <Button

@@ -191,7 +191,7 @@ export default function DeterminationsPage() {
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-white">Wage Determinations</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             Davis-Bacon and state prevailing-wage schedules that anchor every payroll proof.
           </p>
         </div>
@@ -221,12 +221,12 @@ export default function DeterminationsPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search WD number, locality, county, state..."
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-amber-500 focus:outline-none sm:max-w-xs"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-cyan-500 focus:outline-none sm:max-w-xs"
             />
             <select
               value={projectFilter}
               onChange={(e) => setProjectFilter(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+              className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             >
               <option value="">All projects</option>
               {projects.map((p) => (
@@ -236,13 +236,13 @@ export default function DeterminationsPage() {
               ))}
             </select>
           </div>
-          <div className="flex gap-1 rounded-lg border border-slate-700 bg-slate-950 p-1 text-xs">
+          <div className="flex gap-1 rounded-lg border border-stone-700 bg-stone-950 p-1 text-xs">
             {(['all', 'active', 'superseded'] as const).map((s) => (
               <button
                 key={s}
                 onClick={() => setStatusFilter(s)}
                 className={`rounded-md px-3 py-1.5 font-medium capitalize transition-colors ${
-                  statusFilter === s ? 'bg-amber-500 text-slate-950' : 'text-slate-400 hover:text-white'
+                  statusFilter === s ? 'bg-cyan-500 text-stone-950' : 'text-stone-400 hover:text-white'
                 }`}
               >
                 {s}
@@ -286,18 +286,18 @@ export default function DeterminationsPage() {
                     <TD>
                       <Link
                         href={`/dashboard/determinations/${d.id}`}
-                        className="font-medium text-amber-300 hover:underline"
+                        className="font-medium text-cyan-300 hover:underline"
                       >
                         {d.wd_number}
                       </Link>
                       {d.modification_number && (
-                        <span className="ml-2 text-xs text-slate-500">Mod {d.modification_number}</span>
+                        <span className="ml-2 text-xs text-stone-500">Mod {d.modification_number}</span>
                       )}
                     </TD>
                     <TD>{projectName(d.project_id)}</TD>
                     <TD>
-                      <div className="text-slate-300">{d.locality || d.county || '—'}</div>
-                      {d.state && <div className="text-xs text-slate-500">{d.state}</div>}
+                      <div className="text-stone-300">{d.locality || d.county || '—'}</div>
+                      {d.state && <div className="text-xs text-stone-500">{d.state}</div>}
                     </TD>
                     <TD>{d.schedule_type || '—'}</TD>
                     <TD>{fmtDate(d.effective_date)}</TD>
@@ -311,7 +311,7 @@ export default function DeterminationsPage() {
                     <TD className="text-right">
                       <Link
                         href={`/dashboard/determinations/${d.id}`}
-                        className="text-sm text-slate-400 hover:text-amber-300"
+                        className="text-sm text-stone-400 hover:text-cyan-300"
                       >
                         Open →
                       </Link>
@@ -438,19 +438,19 @@ export default function DeterminationsPage() {
 
           <div>
             <div className="mb-2 flex items-center justify-between">
-              <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+              <span className="text-xs font-semibold uppercase tracking-wide text-stone-500">
                 Classification Rates
               </span>
               <button
                 type="button"
                 onClick={addRateRow}
-                className="text-xs font-medium text-amber-300 hover:text-amber-200"
+                className="text-xs font-medium text-cyan-300 hover:text-cyan-200"
               >
                 + Add row
               </button>
             </div>
             <div className="space-y-2">
-              <div className="grid grid-cols-[1fr_6rem_6rem_2rem] gap-2 px-1 text-[11px] uppercase tracking-wide text-slate-600">
+              <div className="grid grid-cols-[1fr_6rem_6rem_2rem] gap-2 px-1 text-[11px] uppercase tracking-wide text-stone-600">
                 <span>Classification</span>
                 <span>Base $/hr</span>
                 <span>Fringe $/hr</span>
@@ -485,7 +485,7 @@ export default function DeterminationsPage() {
                   <button
                     type="button"
                     onClick={() => removeRateRow(i)}
-                    className="text-slate-500 hover:text-red-400"
+                    className="text-stone-500 hover:text-red-400"
                     aria-label="Remove row"
                   >
                     ✕
@@ -495,7 +495,7 @@ export default function DeterminationsPage() {
             </div>
           </div>
 
-          <div className="flex justify-end gap-2 border-t border-slate-800 pt-4">
+          <div className="flex justify-end gap-2 border-t border-stone-800 pt-4">
             <Button type="button" variant="secondary" onClick={() => setModalOpen(false)} disabled={saving}>
               Cancel
             </Button>
@@ -510,7 +510,7 @@ export default function DeterminationsPage() {
 }
 
 const inputCls =
-  'w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-amber-500 focus:outline-none'
+  'w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-cyan-500 focus:outline-none'
 
 function Field({
   label,
@@ -523,9 +523,9 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-xs font-medium text-slate-400">
+      <span className="mb-1 block text-xs font-medium text-stone-400">
         {label}
-        {required && <span className="text-amber-400"> *</span>}
+        {required && <span className="text-cyan-400"> *</span>}
       </span>
       {children}
     </label>

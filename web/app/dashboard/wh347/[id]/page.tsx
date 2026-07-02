@@ -213,7 +213,7 @@ export default function Wh347DetailPage() {
   if (error || !doc) {
     return (
       <div className="space-y-4">
-        <Link href="/dashboard/wh347" className="text-sm text-amber-400 hover:text-amber-300">
+        <Link href="/dashboard/wh347" className="text-sm text-cyan-400 hover:text-cyan-300">
           ← Back to WH-347
         </Link>
         <EmptyState
@@ -233,7 +233,7 @@ export default function Wh347DetailPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <Link href="/dashboard/wh347" className="text-sm text-amber-400 hover:text-amber-300">
+          <Link href="/dashboard/wh347" className="text-sm text-cyan-400 hover:text-cyan-300">
             ← Back to WH-347
           </Link>
           <h1 className="mt-2 flex items-center gap-3 text-2xl font-bold text-white">
@@ -243,7 +243,7 @@ export default function Wh347DetailPage() {
             </Badge>
             {doc.is_final && <Badge tone="amber">Final</Badge>}
           </h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             Week ending {doc.week_ending || '—'} · Fringe method{' '}
             <span className="uppercase">{doc.fringe_method || 'cash'}</span>
           </p>
@@ -277,7 +277,7 @@ export default function Wh347DetailPage() {
       <Card>
         <CardHeader>
           <h2 className="text-base font-semibold text-white">Payroll Lines</h2>
-          <p className="mt-0.5 text-xs text-slate-500">
+          <p className="mt-0.5 text-xs text-stone-500">
             Per-worker classification detail as rendered onto the certified payroll form.
           </p>
         </CardHeader>
@@ -307,7 +307,7 @@ export default function Wh347DetailPage() {
               <TBody>
                 {lines.map((l, i) => (
                   <TR key={i}>
-                    <TD className="font-medium text-slate-200">{workerName(l)}</TD>
+                    <TD className="font-medium text-stone-200">{workerName(l)}</TD>
                     <TD>{classOf(l)}</TD>
                     <TD className="text-right tabular-nums">{num(l.straight_hours)}</TD>
                     <TD className="text-right tabular-nums">{num(l.overtime_hours)}</TD>
@@ -315,7 +315,7 @@ export default function Wh347DetailPage() {
                     <TD className="text-right tabular-nums">{dollars(l.base_rate_paid)}</TD>
                     <TD className="text-right tabular-nums">{dollars(l.fringe_cash_paid)}</TD>
                     <TD className="text-right tabular-nums">{dollars(l.fringe_plan_paid)}</TD>
-                    <TD className="text-right tabular-nums text-slate-100">{dollars(l.gross_paid)}</TD>
+                    <TD className="text-right tabular-nums text-stone-100">{dollars(l.gross_paid)}</TD>
                   </TR>
                 ))}
               </TBody>
@@ -336,22 +336,22 @@ export default function Wh347DetailPage() {
                   <span className="inline-block h-2 w-2 rounded-full bg-emerald-400" />
                   Signed and locked
                 </div>
-                <p className="mt-3 text-sm leading-relaxed text-slate-300">
+                <p className="mt-3 text-sm leading-relaxed text-stone-300">
                   {signature.attestation_text || ATTESTATION}
                 </p>
               </div>
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
-                  <div className="text-xs uppercase tracking-wide text-slate-500">Signer</div>
-                  <div className="mt-1 text-sm text-slate-200">{signature.signer_name || '—'}</div>
-                  <div className="text-xs text-slate-500">{signature.signer_title || ''}</div>
+                  <div className="text-xs uppercase tracking-wide text-stone-500">Signer</div>
+                  <div className="mt-1 text-sm text-stone-200">{signature.signer_name || '—'}</div>
+                  <div className="text-xs text-stone-500">{signature.signer_title || ''}</div>
                 </div>
                 <div>
-                  <div className="text-xs uppercase tracking-wide text-slate-500">Signed</div>
-                  <div className="mt-1 text-sm text-slate-200">
+                  <div className="text-xs uppercase tracking-wide text-stone-500">Signed</div>
+                  <div className="mt-1 text-sm text-stone-200">
                     {signature.signed_at ? new Date(signature.signed_at).toLocaleString() : '—'}
                   </div>
-                  <div className="text-xs text-slate-500">
+                  <div className="text-xs text-stone-500">
                     Fringe method <span className="uppercase">{signature.fringe_method || doc.fringe_method}</span>
                     {signature.signed_ip ? ` · ${signature.signed_ip}` : ''}
                   </div>
@@ -360,8 +360,8 @@ export default function Wh347DetailPage() {
             </div>
           ) : (
             <div className="space-y-4">
-              <p className="text-sm leading-relaxed text-slate-400">{ATTESTATION}</p>
-              <div className="rounded-lg border border-amber-500/30 bg-amber-500/10 p-4 text-sm text-amber-200">
+              <p className="text-sm leading-relaxed text-stone-400">{ATTESTATION}</p>
+              <div className="rounded-lg border border-cyan-500/30 bg-cyan-500/10 p-4 text-sm text-cyan-200">
                 This form is a draft. Signing locks the WH-347. Signing is blocked while the project week has open hard
                 (must-fix) findings.
               </div>
@@ -396,50 +396,50 @@ export default function Wh347DetailPage() {
         <div className="space-y-4">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
                 Signer Name
               </label>
               <input
                 value={signerName}
                 onChange={(e) => setSignerName(e.target.value)}
                 placeholder="Jane Contractor"
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-amber-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
                 Signer Title
               </label>
               <input
                 value={signerTitle}
                 onChange={(e) => setSignerTitle(e.target.value)}
                 placeholder="Payroll Officer"
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-amber-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none"
               />
             </div>
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
               Fringe Method
             </label>
             <select
               value={signFringe}
               onChange={(e) => setSignFringe(e.target.value)}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             >
               <option value="cash">4(a) — Paid in cash</option>
               <option value="plan">4(b) — Paid to approved plans/funds</option>
             </select>
           </div>
-          <p className="rounded-lg border border-slate-800 bg-slate-950 p-3 text-xs leading-relaxed text-slate-400">
+          <p className="rounded-lg border border-stone-800 bg-stone-950 p-3 text-xs leading-relaxed text-stone-400">
             {ATTESTATION}
           </p>
-          <label className="flex items-start gap-2 text-sm text-slate-300">
+          <label className="flex items-start gap-2 text-sm text-stone-300">
             <input
               type="checkbox"
               checked={agree}
               onChange={(e) => setAgree(e.target.checked)}
-              className="mt-0.5 h-4 w-4 rounded border-slate-700 bg-slate-950 text-amber-500 focus:ring-amber-500"
+              className="mt-0.5 h-4 w-4 rounded border-stone-700 bg-stone-950 text-cyan-500 focus:ring-cyan-500"
             />
             I affirm the Statement of Compliance above and understand this locks the WH-347.
           </label>

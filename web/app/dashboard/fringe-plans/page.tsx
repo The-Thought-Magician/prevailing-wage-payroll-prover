@@ -56,8 +56,8 @@ const TYPE_TONE: Record<string, 'amber' | 'green' | 'blue' | 'slate' | 'neutral'
 }
 
 const inputCls =
-  'w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 placeholder-slate-600 focus:border-amber-500/60 focus:outline-none focus:ring-1 focus:ring-amber-500/40'
-const labelCls = 'mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500'
+  'w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 placeholder-stone-600 focus:border-cyan-500/60 focus:outline-none focus:ring-1 focus:ring-cyan-500/40'
+const labelCls = 'mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500'
 
 function fmtDate(d: string | null) {
   if (!d) return '—'
@@ -199,7 +199,7 @@ export default function FringePlansPage() {
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-white">Bona-Fide Fringe Plans</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             Register the bona-fide benefit plans used to credit fringe contributions against the prevailing fringe rate.
           </p>
         </div>
@@ -224,21 +224,21 @@ export default function FringePlansPage() {
       {stats.total > 0 && (
         <Card>
           <CardHeader>
-            <h3 className="text-sm font-semibold text-slate-200">Plans by Benefit Type</h3>
+            <h3 className="text-sm font-semibold text-stone-200">Plans by Benefit Type</h3>
           </CardHeader>
           <CardBody className="space-y-3">
             {Array.from(stats.byType.entries())
               .sort((a, b) => b[1] - a[1])
               .map(([type, count]) => (
                 <div key={type} className="flex items-center gap-3">
-                  <div className="w-32 shrink-0 text-sm capitalize text-slate-300">{type}</div>
-                  <div className="h-3 flex-1 overflow-hidden rounded-full bg-slate-800">
+                  <div className="w-32 shrink-0 text-sm capitalize text-stone-300">{type}</div>
+                  <div className="h-3 flex-1 overflow-hidden rounded-full bg-stone-800">
                     <div
-                      className="h-full rounded-full bg-gradient-to-r from-amber-600 to-amber-400"
+                      className="h-full rounded-full bg-gradient-to-r from-cyan-600 to-cyan-400"
                       style={{ width: `${(count / maxTypeCount) * 100}%` }}
                     />
                   </div>
-                  <div className="w-8 shrink-0 text-right text-sm font-medium text-slate-200">{count}</div>
+                  <div className="w-8 shrink-0 text-right text-sm font-medium text-stone-200">{count}</div>
                 </div>
               ))}
           </CardBody>
@@ -291,21 +291,21 @@ export default function FringePlansPage() {
               <TBody>
                 {filtered.map((p) => (
                   <TR key={p.id}>
-                    <TD className="font-medium text-slate-100">{p.name}</TD>
+                    <TD className="font-medium text-stone-100">{p.name}</TD>
                     <TD>
                       {p.plan_type ? (
                         <Badge tone={TYPE_TONE[p.plan_type] || 'neutral'}>
                           <span className="capitalize">{p.plan_type}</span>
                         </Badge>
                       ) : (
-                        <span className="text-slate-600">—</span>
+                        <span className="text-stone-600">—</span>
                       )}
                     </TD>
-                    <TD>{p.provider || <span className="text-slate-600">—</span>}</TD>
-                    <TD className="capitalize">{p.contribution_basis || <span className="text-slate-600">—</span>}</TD>
+                    <TD>{p.provider || <span className="text-stone-600">—</span>}</TD>
+                    <TD className="capitalize">{p.contribution_basis || <span className="text-stone-600">—</span>}</TD>
                     <TD>
                       {fmtDate(p.effective_date)}
-                      {p.end_date ? <span className="text-slate-500"> – {fmtDate(p.end_date)}</span> : ''}
+                      {p.end_date ? <span className="text-stone-500"> – {fmtDate(p.end_date)}</span> : ''}
                     </TD>
                     <TD>
                       {isActivePlan(p) ? <Badge tone="green">Active</Badge> : <Badge tone="slate">Inactive</Badge>}
